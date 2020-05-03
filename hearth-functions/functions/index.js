@@ -53,6 +53,23 @@ const FBAuth = (req, res, next) => {
     console.error('No token found');
     return res.status(403).json({ error: 'Unauthorised' });
   }
+
+  admin.auth().verifyIdToken(idToken)
+    .then(decodedToken => {
+      req.user = decodedToken;
+      console.log(decodedToken);
+      return db.collection('user')
+        .where('userId', '==', req.user.uid);
+        .limit(1)
+        .get();
+    })
+    .then(data => {
+      req.user.handle = data.docs[0].data().handle;
+      return next();
+    })
+    .catch(err => {
+      
+    });
 };
 
 app.post('/post', FBAuth, (req, res) => {
