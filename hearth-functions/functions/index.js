@@ -59,7 +59,7 @@ const FBAuth = (req, res, next) => {
       req.user = decodedToken;
       console.log(decodedToken);
       return db.collection('user')
-        .where('userId', '==', req.user.uid);
+        .where('userId', '==', req.user.uid)
         .limit(1)
         .get();
     })
