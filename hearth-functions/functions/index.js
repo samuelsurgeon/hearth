@@ -42,9 +42,20 @@ app.get('/posts', (req, res) => {
       return res.json(posts);
     })
     .catch(err => console.error(err));
-})
+});
 
-app.post('/post', (req, res) => {
+const FBAuth = (req, res, next) => {
+  let idToken;
+
+  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer ')) {
+    idToken = req.headers.authorization.split('Bearer ')[1];
+  } else {
+    console.error('No token found');
+    return res.status(403).json({ error: 'Unauthorised' });
+  }
+};
+
+app.post('/post', FBAuth, (req, res) => {
   const newPost = {
     body: req.body.body,
     userHandle: req.body.userHandle,
