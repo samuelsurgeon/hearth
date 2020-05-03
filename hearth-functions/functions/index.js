@@ -68,14 +68,15 @@ const FBAuth = (req, res, next) => {
       return next();
     })
     .catch(err => {
-      
+      console.error('Error whilst verifying token: ', err);
+      return res.status(403).json(err);
     });
 };
 
 app.post('/post', FBAuth, (req, res) => {
   const newPost = {
     body: req.body.body,
-    userHandle: req.body.userHandle,
+    userHandle: req.user.handle,
     createdAd: new Date().toISOString()
   };
 
