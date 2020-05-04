@@ -3,13 +3,10 @@ const app = require('express')();
 
 const FBAuth = require('./util/fbAuth');
 
-const { getAllPosts } = require('./handlers/posts');
+const { getAllPosts, postOnePost } = require('./handlers/posts');
 const { signup, login } = require('./handlers/users');
 
-const firebase = require('firebase');
-firebase.initializeApp(config);
-
-app.get('/posts', getAllScreams);
+app.get('/posts', getAllPosts);
 app.post('/post', FBAuth, postOnePost);
 app.post('/signup', signup);
 app.post('/login', login);
