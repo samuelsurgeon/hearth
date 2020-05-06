@@ -4,11 +4,11 @@ const FBAuth = require('./util/fbAuth');
 
 const { getAllPosts, postOnePost, getPost } = require('./handlers/posts');
 const {
-  signup, 
-  login, 
+  signup,
+  login,
   uploadImage,
   addUserDetails,
-  getAuthenticatedUser
+  getAuthenticatedUser,
 } = require('./handlers/users');
 
 app.get('/posts', getAllPosts);
