@@ -1,42 +1,40 @@
 const { db } = require('../util/admin');
 
 exports.getAllPosts = (req, res) => {
-  db
-    .collection('posts')
+  db.collection('posts')
     .orderBy('createdAt', 'desc')
     .get()
-    .then(data => {
+    .then((data) => {
       let posts = [];
-      data.forEach(doc => {
+      data.forEach((doc) => {
         posts.push({
           postId: doc.id,
           body: doc.data().body,
           userHandle: doc.data().userHandle,
-          createdAt: doc.data().createdAt
+          createdAt: doc.data().createdAt,
         });
-      })
+      });
       return res.json(posts);
     })
-    .catch(err => console.error(err));
+    .catch((err) => console.error(err));
 };
 
 exports.postOnePost = (req, res) => {
   const newPost = {
     body: req.body.body,
     userHandle: req.user.handle,
-    createdAd: new Date().toISOString()
+    createdAd: new Date().toISOString(),
   };
 
-  db
-    .collection('posts')
+  db.collection('posts')
     .add(newPost)
-    .then(doc => {
+    .then((doc) => {
       res.json({ message: `Document ${doc.id} created successfully.` });
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).json({ error: `Something went wrong...` });
       console.error(err);
-    })
+    });
 };
 
 exports.getPost = (req, res) => {
@@ -66,4 +64,33 @@ exports.getPost = (req, res) => {
       console.error(err);
       res.status(500).json({ error: err.code });
     });
-}
+};
+
+exports.commentOnScream = (req, res) => {
+  if (req.body.body.trim() === '')
+    return res.status(400).json({ error: 'Must not be empty' });
+
+  const newComment = {
+    body: req.body.body,
+    createdAt: new Date().toISOString(),
+    postId: req.params.postId,
+    userHandle: req.user.handle,
+    userImage: req.user.imageUrl,
+  };
+
+  db.doc(`/posts/${req.params.postId}`)
+    .get()
+    .then((doc) => {
+      if (!doc.exists) {
+        return res.status(404).json({ error: 'Post not found' });
+      }
+      return db.collection('comments').add(newComment);
+    })
+    .then(() => {
+      res.json(newComment);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: 'Something went wrong' });
+    });
+};

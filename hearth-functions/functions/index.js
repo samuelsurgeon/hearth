@@ -7,6 +7,7 @@ const {
   signup,
   login,
   uploadImage,
+  commentOnScream,
   addUserDetails,
   getAuthenticatedUser,
 } = require('./handlers/users');
@@ -14,9 +15,10 @@ const {
 app.get('/posts', getAllPosts);
 app.post('/post', FBAuth, postOnePost);
 app.get('/post/:postId', getPost);
+app.post('/post/:postId/comment', FBAuth, commentOnScream);
+
 app.post('/signup', signup);
 app.post('/login', login);
-
 app.post('/user/image', FBAuth, uploadImage);
 app.post('/user', FBAuth, addUserDetails);
 app.get('/user', FBAuth, getAuthenticatedUser);
