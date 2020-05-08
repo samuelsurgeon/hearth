@@ -9,7 +9,7 @@ export default class home extends Component {
   }
   
   componentDidMount() {
-    axios.get('/screams')
+    axios.get('/posts')
       .then(res => {
         this.setState({
           screams: res.data
