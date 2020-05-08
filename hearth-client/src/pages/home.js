@@ -13,6 +13,7 @@ export default class home extends Component {
     axios
       .get('/posts')
       .then((res) => {
+        console.log(res.data);
         this.setState({
           posts: res.data
         });
@@ -26,7 +27,7 @@ export default class home extends Component {
     ) : <p>Loading...</p>
 
     return (
-      <Grid container spacing={16}>
+      <Grid container spacing={2}>
         <Grid item sm={8} xs={12}>
           {recentPostsMarkup}
         </Grid>
