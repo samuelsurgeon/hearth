@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
 import Grid from '@material-ui/core/Grid';
+
+import Post from '../components/Post';
 
 export default class home extends Component {
   state = {
