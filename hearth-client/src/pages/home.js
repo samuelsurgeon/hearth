@@ -5,28 +5,28 @@ import Grid from '@material-ui/core/Grid';
 
 export default class home extends Component {
   state = {
-    screams: null
+    posts: null
   }
   
   componentDidMount() {
     axios.get('/posts')
       .then(res => {
         this.setState({
-          screams: res.data
+          posts: res.data
         })
       })
       .catch(err => console.error(err));
   }
 
   render() {
-    let recentScreamsMarkup = this.state.screams ? (
-      this.state.screams.map(scream => <p>{scream.body}</p>)
+    let recentPostsMarkup = this.state.posts ? (
+      this.state.posts.map(post => <p>{post.body}</p>)
     ) : <p>Loading...</p>
 
     return (
       <Grid container spacing={16}>
         <Grid item sm={8} xs={12}>
-          {recentScreamsMarkup}
+          {recentPostsMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>
           <p>Profile...</p>
