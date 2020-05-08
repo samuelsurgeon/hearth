@@ -20,7 +20,7 @@ export default class home extends Component {
 
   render() {
     let recentPostsMarkup = this.state.posts ? (
-      this.state.posts.map(post => <p>{post.body}</p>)
+      this.state.posts.map(post => <Post post={post} />)
     ) : <p>Loading...</p>
 
     return (
