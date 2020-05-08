@@ -10,13 +10,14 @@ export default class home extends Component {
   }
   
   componentDidMount() {
-    axios.get('/posts')
-      .then(res => {
+    axios
+      .get('/posts')
+      .then((res) => {
         this.setState({
           posts: res.data
-        })
+        });
       })
-      .catch(err => console.error(err));
+      .catch((err) => console.error(err));
   }
 
   render() {
