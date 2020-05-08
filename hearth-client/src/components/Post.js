@@ -32,7 +32,7 @@ class Post extends Component {
         image={userImage}
         title="Profile image"
         className={classes.image} />
-        <CardContent class={classes.content}>
+        <CardContent className={classes.content}>
           <Typography 
             variant="h5" 
             component={Link} 
