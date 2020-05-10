@@ -11,7 +11,7 @@ let db = {
       location: 'Lonodn, UK',
     },
   ],
-  screams: [
+  posts: [
     {
       userHandle: 'user',
       body: 'This is a sample scream',
