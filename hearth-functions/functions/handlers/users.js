@@ -165,13 +165,17 @@ exports.getAuthenticatedUser = (req, res) => {
       data.forEach((doc) => {
         userData.likes.push(doc.data());
       });
+      return res.json(userData);
+      /* This is what I edited out
       return db
         .collection('notifications')
         .where('recipient', '==', req.user.handle)
         .orderBy('createdAt', 'desc')
         .limit(10)
         .get();
+      */
     })
+    /*
     .then((data) => {
       userData.notifications = [];
       data.forEach((doc) => {
@@ -187,9 +191,11 @@ exports.getAuthenticatedUser = (req, res) => {
       });
       return res.json(userData);
     })
+    */
     .catch((err) => {
       console.error(err);
       return res.status(500).json({ error: err.code });
+      //return res.status(500).json({ error: 'hihi' });
     });
 };
 
