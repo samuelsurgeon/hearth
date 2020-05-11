@@ -4,13 +4,12 @@ import PropTypes from 'prop-types';
 import AppIcon from '../images/icon.png';
 import { Link } from 'react-router-dom';
 
-// MUI Stuff
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
-// Redux stuff
+
 import { connect } from 'react-redux';
 import { signupUser } from '../redux/actions/userActions';
 
@@ -29,11 +28,13 @@ class signup extends Component {
       errors: {}
     };
   }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
       this.setState({ errors: nextProps.UI.errors });
     }
   }
+
   handleSubmit = (event) => {
     event.preventDefault();
     this.setState({
@@ -47,11 +48,13 @@ class signup extends Component {
     };
     this.props.signupUser(newUserData, this.props.history);
   };
+
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
+
   render() {
     const {
       classes,
@@ -135,7 +138,7 @@ class signup extends Component {
             </Button>
             <br />
             <small>
-              Already have an account ? Login <Link to="/login">here</Link>
+              Already have an account? Login <Link to="/login">here</Link>
             </small>
           </form>
         </Grid>
@@ -161,3 +164,4 @@ export default connect(
   mapStateToProps,
   { signupUser }
 )(withStyles(styles)(signup));
+

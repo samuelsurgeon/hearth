@@ -81,8 +81,8 @@ class PostDialog extends Component {
   render() {
     const {
       classes,
-      scream: {
-        screamId,
+      post: {
+        postId,
         body,
         createdAt,
         likeCount,
@@ -118,7 +118,7 @@ class PostDialog extends Component {
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body1">{body}</Typography>
-          <LikeButton screamId={screamId} />
+          <LikeButton postId={postId} />
           <span>{likeCount} likes</span>
           <MyButton tip="comments">
             <ChatIcon color="primary" />
@@ -126,7 +126,7 @@ class PostDialog extends Component {
           <span>{commentCount} comments</span>
         </Grid>
         <hr className={classes.visibleSeparator} />
-        <CommentForm screamId={screamId} />
+        <CommentForm postId={postId} />
         <Comments comments={comments} />
       </Grid>
     );
@@ -134,7 +134,7 @@ class PostDialog extends Component {
       <Fragment>
         <MyButton
           onClick={this.handleOpen}
-          tip="Expand scream"
+          tip="Expand post"
           tipClassName={classes.expandButton}
         >
           <UnfoldMore color="primary" />
@@ -163,24 +163,25 @@ class PostDialog extends Component {
 
 ScreamDialog.propTypes = {
   clearErrors: PropTypes.func.isRequired,
-  getScream: PropTypes.func.isRequired,
-  screamId: PropTypes.string.isRequired,
+  getPost: PropTypes.func.isRequired,
+  postId: PropTypes.string.isRequired,
   userHandle: PropTypes.string.isRequired,
-  scream: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  scream: state.data.scream,
+  post: state.data.post,
   UI: state.UI
 });
 
 const mapActionsToProps = {
-  getScream,
+  getPost,
   clearErrors
 };
 
-export default connect(
+export default connect (
   mapStateToProps,
   mapActionsToProps
-)(withStyles(styles)(ScreamDialog));
+)(withStyles(styles)(PostDialog));
+

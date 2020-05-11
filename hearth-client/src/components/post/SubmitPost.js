@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import MyButton from '../../util/MyButton';
-// MUI Stuff
+
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -11,7 +11,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
-// Redux stuff
+
 import { connect } from 'react-redux';
 import { postScream, clearErrors } from '../../redux/actions/dataActions';
 
@@ -32,12 +32,13 @@ const styles = (theme) => ({
   }
 });
 
-class PostScream extends Component {
+class SubmitPost extends Component {
   state = {
     open: false,
     body: '',
     errors: {}
   };
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
       this.setState({
@@ -48,20 +49,25 @@ class PostScream extends Component {
       this.setState({ body: '', open: false, errors: {} });
     }
   }
+
   handleOpen = () => {
     this.setState({ open: true });
   };
+
   handleClose = () => {
     this.props.clearErrors();
     this.setState({ open: false, errors: {} });
   };
+
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.postScream({ body: this.state.body });
+    this.props.submitPost({ body: this.state.body });
   };
+
   render() {
     const { errors } = this.state;
     const {
@@ -70,7 +76,7 @@ class PostScream extends Component {
     } = this.props;
     return (
       <Fragment>
-        <MyButton onClick={this.handleOpen} tip="Post a Scream!">
+        <MyButton onClick={this.handleOpen} tip="Submit a post!">
           <AddIcon />
         </MyButton>
         <Dialog
@@ -86,16 +92,16 @@ class PostScream extends Component {
           >
             <CloseIcon />
           </MyButton>
-          <DialogTitle>Post a new scream</DialogTitle>
+          <DialogTitle>Submit a new post</DialogTitle>
           <DialogContent>
             <form onSubmit={this.handleSubmit}>
               <TextField
                 name="body"
                 type="text"
-                label="SCREAM!!"
+                label="Post"
                 multiline
                 rows="3"
-                placeholder="Scream at your fellow apes"
+                placeholder="Submit a post"
                 error={errors.body ? true : false}
                 helperText={errors.body}
                 className={classes.textField}
@@ -125,8 +131,8 @@ class PostScream extends Component {
   }
 }
 
-PostScream.propTypes = {
-  postScream: PropTypes.func.isRequired,
+submitPost.propTypes = {
+  submitPost: PropTypes.func.isRequired,
   clearErrors: PropTypes.func.isRequired,
   UI: PropTypes.object.isRequired
 };
@@ -135,7 +141,8 @@ const mapStateToProps = (state) => ({
   UI: state.UI
 });
 
-export default connect(
+export default connect (
   mapStateToProps,
-  { postScream, clearErrors }
+  { submitPost, clearErrors }
 )(withStyles(styles)(PostScream));
+

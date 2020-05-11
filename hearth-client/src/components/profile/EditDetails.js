@@ -2,17 +2,16 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import MyButton from '../../util/MyButton';
-// Redux stuff
+
 import { connect } from 'react-redux';
 import { editUserDetails } from '../../redux/actions/userActions';
-// MUI Stuff
+
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-// Icons
 import EditIcon from '@material-ui/icons/Edit';
 
 const styles = (theme) => ({
@@ -29,6 +28,7 @@ class EditDetails extends Component {
     location: '',
     open: false
   };
+
   mapUserDetailsToState = (credentials) => {
     this.setState({
       bio: credentials.bio ? credentials.bio : '',
@@ -36,13 +36,16 @@ class EditDetails extends Component {
       location: credentials.location ? credentials.location : ''
     });
   };
+
   handleOpen = () => {
     this.setState({ open: true });
     this.mapUserDetailsToState(this.props.credentials);
   };
+  
   handleClose = () => {
     this.setState({ open: false });
   };
+
   componentDidMount() {
     const { credentials } = this.props;
     this.mapUserDetailsToState(credentials);
@@ -53,6 +56,7 @@ class EditDetails extends Component {
       [event.target.name]: event.target.value
     });
   };
+
   handleSubmit = () => {
     const userDetails = {
       bio: this.state.bio,
@@ -62,6 +66,7 @@ class EditDetails extends Component {
     this.props.editUserDetails(userDetails);
     this.handleClose();
   };
+
   render() {
     const { classes } = this.props;
     return (
@@ -84,7 +89,7 @@ class EditDetails extends Component {
             <form>
               <TextField
                 name="bio"
-                tpye="text"
+                type="text"
                 label="Bio"
                 multiline
                 rows="3"
@@ -96,7 +101,7 @@ class EditDetails extends Component {
               />
               <TextField
                 name="website"
-                tpye="text"
+                type="text"
                 label="Website"
                 placeholder="Your personal/professinal website"
                 className={classes.textField}
@@ -106,7 +111,7 @@ class EditDetails extends Component {
               />
               <TextField
                 name="location"
-                tpye="text"
+                type="text"
                 label="Location"
                 placeholder="Where you live"
                 className={classes.textField}
@@ -143,3 +148,4 @@ export default connect(
   mapStateToProps,
   { editUserDetails }
 )(withStyles(styles)(EditDetails));
+

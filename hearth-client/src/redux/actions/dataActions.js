@@ -1,20 +1,19 @@
 import {
-  SET_SCREAMS,
+  SET_POSTS,
   LOADING_DATA,
-  LIKE_SCREAM,
-  UNLIKE_SCREAM,
-  DELETE_SCREAM,
+  LIKE_POST,
+  UNLIKE_POST,
+  DELETE_POST,
   SET_ERRORS,
-  POST_SCREAM,
+  SUBMIT_POST,
   CLEAR_ERRORS,
   LOADING_UI,
-  SET_SCREAM,
+  SET_POST,
   STOP_LOADING_UI,
   SUBMIT_COMMENT
 } from '../types';
 import axios from 'axios';
 
-// Get all screams
 export const getScreams = () => (dispatch) => {
   dispatch({ type: LOADING_DATA });
   axios
