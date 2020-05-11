@@ -161,7 +161,7 @@ class PostDialog extends Component {
   }
 }
 
-ScreamDialog.propTypes = {
+PostDialog.propTypes = {
   clearErrors: PropTypes.func.isRequired,
   getPost: PropTypes.func.isRequired,
   postId: PropTypes.string.isRequired,

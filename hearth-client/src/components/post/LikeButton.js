@@ -34,7 +34,7 @@ export class LikePost extends Component {
           <FavoriteBorder color="primary" />
         </MyButton>
       </Link>
-    ) : this.likedScream() ? (
+    ) : this.likedPost() ? (
       <MyButton tip="Undo like" onClick={this.unlikePost}>
         <FavoriteIcon color="primary" />
       </MyButton>

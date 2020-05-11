@@ -31,7 +31,7 @@ class DeletePost extends Component {
     this.setState({ open: false });
   };
   deletePost = () => {
-    this.props.deletePost(this.props.screamId);
+    this.props.deletePost(this.props.postId);
     this.setState({ open: false });
   };
   render() {
@@ -59,7 +59,7 @@ class DeletePost extends Component {
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.deleteScream} color="secondary">
+            <Button onClick={this.deletePost} color="secondary">
               Delete
             </Button>
           </DialogActions>
@@ -69,7 +69,7 @@ class DeletePost extends Component {
   }
 }
 
-DeleteScream.propTypes = {
+DeletePost.propTypes = {
   deletePost: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
   postId: PropTypes.string.isRequired

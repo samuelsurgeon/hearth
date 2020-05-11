@@ -13,7 +13,7 @@ import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
 
 import { connect } from 'react-redux';
-import { postScream, clearErrors } from '../../redux/actions/dataActions';
+import { submitPost, clearErrors } from '../../redux/actions/dataActions';
 
 const styles = (theme) => ({
   ...theme,
@@ -144,5 +144,5 @@ const mapStateToProps = (state) => ({
 export default connect (
   mapStateToProps,
   { submitPost, clearErrors }
-)(withStyles(styles)(PostScream));
+)(withStyles(styles)(SubmitPost));
 

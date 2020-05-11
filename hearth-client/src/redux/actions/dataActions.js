@@ -110,7 +110,7 @@ export const deletePost = (postId) => (dispatch) => {
   axios
     .delete(`/post/${postId}`)
     .then(() => {
-      dispatch({ type: DELETE_POST, payload: screamId });
+      dispatch({ type: DELETE_POST, payload: postId });
     })
     .catch((err) => console.log(err));
 };
