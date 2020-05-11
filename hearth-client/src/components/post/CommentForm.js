@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
-// MUI Stuff
+
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-// Redux stuff
+
 import { connect } from 'react-redux';
 import { submitComment } from '../../redux/actions/dataActions';
 
@@ -31,6 +31,7 @@ class CommentForm extends Component {
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.submitComment(this.props.screamId, { body: this.state.body });
@@ -46,7 +47,7 @@ class CommentForm extends Component {
           <TextField
             name="body"
             type="text"
-            label="Comment on scream"
+            label="Comment on post"
             error={errors.comment ? true : false}
             helperText={errors.comment}
             value={this.state.body}
@@ -74,7 +75,7 @@ CommentForm.propTypes = {
   submitComment: PropTypes.func.isRequired,
   UI: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
-  screamId: PropTypes.string.isRequired,
+  postId: PropTypes.string.isRequired,
   authenticated: PropTypes.bool.isRequired
 };
 
@@ -87,3 +88,4 @@ export default connect(
   mapStateToProps,
   { submitComment }
 )(withStyles(styles)(CommentForm));
+
