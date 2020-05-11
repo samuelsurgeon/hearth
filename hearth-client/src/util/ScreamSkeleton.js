@@ -1,11 +1,10 @@
 import React, { Fragment } from 'react';
 import NoImg from '../images/no-img.png';
 import PropTypes from 'prop-types';
-// MUI
+
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-
 import withStyles from '@material-ui/core/styles/withStyles';
 
 const styles = (theme) => ({
@@ -49,7 +48,7 @@ const styles = (theme) => ({
   }
 });
 
-const ScreamSkeleton = (props) => {
+const PostSkeleton = (props) => {
   const { classes } = props;
 
   const content = Array.from({ length: 5 }).map((item, index) => (
@@ -68,8 +67,9 @@ const ScreamSkeleton = (props) => {
   return <Fragment>{content}</Fragment>;
 };
 
-ScreamSkeleton.propTypes = {
+PostSkeleton.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(ScreamSkeleton);
+export default withStyles(styles)(PostSkeleton);
+
