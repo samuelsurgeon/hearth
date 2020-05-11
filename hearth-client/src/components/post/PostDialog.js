@@ -7,19 +7,18 @@ import Comments from './Comments';
 import CommentForm from './CommentForm';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
-// MUI Stuff
+
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-// Icons
 import CloseIcon from '@material-ui/icons/Close';
 import UnfoldMore from '@material-ui/icons/UnfoldMore';
 import ChatIcon from '@material-ui/icons/Chat';
-// Redux stuff
+
 import { connect } from 'react-redux';
-import { getScream, clearErrors } from '../../redux/actions/dataActions';
+import { getPost, clearErrors } from '../../redux/actions/dataActions';
 
 const styles = (theme) => ({
   ...theme,
@@ -47,7 +46,7 @@ const styles = (theme) => ({
   }
 });
 
-class ScreamDialog extends Component {
+class PostDialog extends Component {
   state = {
     open: false,
     oldPath: '',
@@ -58,19 +57,21 @@ class ScreamDialog extends Component {
       this.handleOpen();
     }
   }
+
   handleOpen = () => {
     let oldPath = window.location.pathname;
 
-    const { userHandle, screamId } = this.props;
-    const newPath = `/users/${userHandle}/scream/${screamId}`;
+    const { userHandle, postId } = this.props;
+    const newPath = `/users/${userHandle}/post/${postId}`;
 
     if (oldPath === newPath) oldPath = `/users/${userHandle}`;
 
     window.history.pushState(null, null, newPath);
 
     this.setState({ open: true, oldPath, newPath });
-    this.props.getScream(this.props.screamId);
+    this.props.getPost(this.props.postId);
   };
+
   handleClose = () => {
     window.history.pushState(null, null, this.state.oldPath);
     this.setState({ open: false });
