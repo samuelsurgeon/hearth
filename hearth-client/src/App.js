@@ -34,18 +34,16 @@ function App() {
   return (
     <MuiThemeProvider theme={theme}>
       <Provider store={store}>
-        <div className="App">
-          <Router>
-            <NavBar />
-            <div className="container">
-              <Switch>
-                <Route exact path="/" component={home} />
-                <AuthRoute exact path="/login" component={login} authenticated={authenticated} />
-                <AuthRoute exact path="/signup" component={signup} authenticated={authenticated} />
-              </Switch>
-            </div>
-          </Router>
-        </div>
+        <Router>
+          <NavBar />
+          <div className="container">
+            <Switch>
+              <Route exact path="/" component={home} />
+              <AuthRoute exact path="/login" component={login} authenticated={authenticated} />
+              <AuthRoute exact path="/signup" component={signup} authenticated={authenticated} />
+            </Switch>
+          </div>
+        </Router>
       </Provider>
     </MuiThemeProvider>
   );
