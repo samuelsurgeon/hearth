@@ -30,13 +30,14 @@ class login extends Component {
     this.setState({
       loading: true
     });
-    const userData = {
+    const newUserData = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
     }
-    axios.post('/login', userData)
+    axios.post('/signup', newUserData)
       .then(res => {
         console.log(res.data);
+        localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`);
         this.setState({
           loading: false
         });
