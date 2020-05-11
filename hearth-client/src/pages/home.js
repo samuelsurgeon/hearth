@@ -18,7 +18,7 @@ class home extends Component {
     let recentPostsMarkup = !loading ? (
       posts.map((post) => <Post key={post.postId} post={post} />)
     ) : (
-      <PostSkeleton />
+      {/* <PostSkeleton /> */}
     );
     return (
       <Grid container spacing={16}>
@@ -26,7 +26,7 @@ class home extends Component {
           {recentPostsMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>
-          <Profile />
+        {/* <Profile /> */}
         </Grid>
       </Grid>
     );

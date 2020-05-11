@@ -1,3 +1,4 @@
+/*
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -12,7 +13,7 @@ import LinkIcon from '@material-ui/icons/Link';
 import CalendarToday from '@material-ui/icons/CalendarToday';
 
 const styles = (theme) => ({
-  ...theme
+  ...theme.wrapper
 });
 
 const StaticProfile = (props) => {
@@ -70,4 +71,6 @@ StaticProfile.propTypes = {
 };
 
 export default withStyles(styles)(StaticProfile);
+
+*/
 

@@ -21,7 +21,7 @@ import { connect } from 'react-redux';
 import { getPost, clearErrors } from '../../redux/actions/dataActions';
 
 const styles = (theme) => ({
-  ...theme,
+  ...theme.wrapper,
   profileImage: {
     maxWidth: 200,
     height: 200,

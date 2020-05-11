@@ -8,7 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 const styles = (theme) => ({
-  ...theme,
+  ...theme.wrapper,
   card: {
     display: 'flex',
     marginBottom: 20

@@ -1,3 +1,4 @@
+/*
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -21,7 +22,7 @@ import { connect } from 'react-redux';
 import { logoutUser, uploadImage } from '../../redux/actions/userActions';
 
 const styles = (theme) => ({
-  ...theme
+  ...theme.wrapper
 });
 
 class Profile extends Component {
@@ -160,3 +161,4 @@ export default connect(
   mapActionsToProps
 )(withStyles(styles)(Profile));
 
+*/

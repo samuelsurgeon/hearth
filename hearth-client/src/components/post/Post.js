@@ -1,3 +1,4 @@
+/*
 import React, { Component } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { Link } from 'react-router-dom';
@@ -107,3 +108,4 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps)(withStyles(styles)(Post));
 
+*/

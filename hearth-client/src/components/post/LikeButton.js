@@ -1,3 +1,4 @@
+/*
 import React, { Component } from 'react';
 import MyButton from '../../util/MyButton';
 import { Link } from 'react-router-dom';
@@ -68,3 +69,4 @@ export default connect(
   mapActionsToProps
 )(LikeButton);
 
+*/

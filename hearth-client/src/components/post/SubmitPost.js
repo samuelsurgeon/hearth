@@ -1,3 +1,4 @@
+/*
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -16,7 +17,7 @@ import { connect } from 'react-redux';
 import { submitPost, clearErrors } from '../../redux/actions/dataActions';
 
 const styles = (theme) => ({
-  ...theme,
+  ...theme.wrapper,
   submitButton: {
     position: 'relative',
     float: 'right',
@@ -146,3 +147,4 @@ export default connect (
   { submitPost, clearErrors }
 )(withStyles(styles)(SubmitPost));
 
+*/
