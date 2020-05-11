@@ -6,6 +6,9 @@ import themeFile from './util/theme';
 import jwtDecode from 'jwt-decode';
 import './App.css';
 
+import { Provider } from 'react-redux';
+import store from './redux/store';
+
 import NavBar from './components/Navbar';
 import AuthRoute from './util/AuthRoute';
 
@@ -30,18 +33,20 @@ if (token) {
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
-      <div className="App">
-        <Router>
-          <NavBar />
-          <div className="container">
-            <Switch>
-              <Route exact path="/" component={home} />
-              <AuthRoute exact path="/login" component={login} authenticated={authenticated} />
-              <AuthRoute exact path="/signup" component={signup} authenticated={authenticated} />
-            </Switch>
-          </div>
-        </Router>
-      </div>
+      <Provider store={store}>
+        <div className="App">
+          <Router>
+            <NavBar />
+            <div className="container">
+              <Switch>
+                <Route exact path="/" component={home} />
+                <AuthRoute exact path="/login" component={login} authenticated={authenticated} />
+                <AuthRoute exact path="/signup" component={signup} authenticated={authenticated} />
+              </Switch>
+            </div>
+          </Router>
+        </div>
+      </Provider>
     </MuiThemeProvider>
   );
 }
