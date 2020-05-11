@@ -34,7 +34,7 @@ class CommentForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.submitComment(this.props.screamId, { body: this.state.body });
+    this.props.submitComment(this.props.postId, { body: this.state.body });
   };
 
   render() {
