@@ -69,7 +69,7 @@ class signup extends Component {
       <Grid container className={classes.form}>
         <Grid item sm /> 
         <Grid item sm>
-          <Typography variant="h2" className={classes.pageTitle}>Login</Typography>
+          <Typography variant="h2" className={classes.pageTitle}>Signup</Typography>
           <form noValidate onSubmit={this.handleSubmit}>
             <TextField
               id="email" 
@@ -93,6 +93,28 @@ class signup extends Component {
               value={this.state.password} 
               onChange={this.handleChange}
               fullWidth />
+            <TextField
+              id="confirmPassword" 
+              name="confirmPassword" 
+              type="password" 
+              label="Confirm Password" 
+              className={classes.textField} 
+              helperText={errors.confirmPassword}
+              error={errors.confirmPassword ? true : false}
+              value={this.state.confirmPassword} 
+              onChange={this.handleChange}
+              fullWidth />
+            <TextField
+              id="handle" 
+              name="handle" 
+              type="text" 
+              label="Handle" 
+              className={classes.textField} 
+              helperText={errors.handle}
+              error={errors.handle ? true : false}
+              value={this.state.handle} 
+              onChange={this.handleChange}
+              fullWidth />
             {errors.general && (
               <Typography variant="body2" className={classes.customError}>
                 {errors.general}
@@ -104,13 +126,13 @@ class signup extends Component {
               color="primary" 
               className={classes.button}
               disabled={loading} >
-            Login
+            Signup
             {loading && (
               <CircularProgress size={30} className={classes.progress} />
             )}
             </Button>
             <br />
-            <small>Don't have an account? Sign up <Link to="/signup">here</Link></small>
+            <small>Already have an account? Login <Link to="/login">here</Link></small>
           </form>
         </Grid>
         <Grid item sm /> 
@@ -119,9 +141,9 @@ class signup extends Component {
   }
 }
 
-login.propTypes = {
+signup.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(login);
+export default withStyles(styles)(signup);
 
