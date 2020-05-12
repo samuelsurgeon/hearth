@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 import Button from '@material-ui/core/Button';
+import { connect } from 'react-redux';
 
 class Profile extends Component {
   render() {
@@ -15,4 +16,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default connect(mapStateToProps)(withStyles(styles)(Profile));
