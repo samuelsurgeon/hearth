@@ -46,7 +46,7 @@ class signup extends Component {
       confirmPassword: this.state.confirmPassword,
       handle: this.state.handle
     }
-    this.props.signupUser(newUserDate, this.props.history);
+    this.props.signupUser(newUserData, this.props.history);
   }
 
   handleChange = event => {
@@ -147,5 +147,5 @@ const mapStateToProps = state => ({
   UI: state.UI
 });
 
-export default connect(mapStateToProps, { logoutUser })(withStyles(styles)(signup));
+export default connect(mapStateToProps, { signupUser })(withStyles(styles)(signup));
 
