@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 
@@ -16,6 +15,9 @@ import LocationOn from '@material-ui/icons/LocationOn';
 import LinkIcon from '@material-ui/icons/Link';
 import CalendarToday from '@material-ui/icons/CalendarToday';
 import EditIcon from '@material-ui/icons/Edit';
+
+import { connect } from 'react-redux';
+import { logoutUser, uploadImage } from '../redux/actions/userActions';
 
 const styles = theme => ({
   ...theme.spreadThis,
@@ -152,9 +154,13 @@ const mapStateToProps = state => ({
   user: state.user
 });
 
+const mapActionsToProps = { logoutUser, uploadImage };
+
 Profile.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  uploadImage: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired
 }
 
-export default connect(mapStateToProps)(withStyles(styles)(Profile));
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(Profile));

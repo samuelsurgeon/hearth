@@ -54,7 +54,7 @@ export const getUserData = () => (dispatch) => {
     .catch(err => console.log(err));
 }
 
-const uploadImage = formData => dispatch => {
+export const uploadImage = formData => dispatch => {
   dispatch({ type: LOADING_USER });
   axios.post('/user/image', formData)
     .then(() => {
