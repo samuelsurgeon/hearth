@@ -25,7 +25,6 @@ class signup extends Component {
       password: '',
       confirmPassword: '',
       handle: '',
-      loading: false,
       errors: {}
     }
   }
@@ -47,7 +46,7 @@ class signup extends Component {
       confirmPassword: this.state.confirmPassword,
       handle: this.state.handle
     }
-    this.props.logoutUser(newUserDate, this.props.history);
+    this.props.signupUser(newUserDate, this.props.history);
   }
 
   handleChange = event => {
@@ -57,8 +56,8 @@ class signup extends Component {
   }
 
   render() {
-    const { classes } = this.props;
-    const { errors, loading } = this.state;
+    const { classes, UI: { loading } } = this.props;
+    const { errors } = this.state;
 
     return (
       <Grid container className={classes.form}>
@@ -140,7 +139,7 @@ signup.propTypes = {
   classes: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired,
-  logoutUser: PropTypes.func.isRequired
+  signupUser: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
