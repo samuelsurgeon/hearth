@@ -28,7 +28,7 @@ if (token) {
     store.dispatch(logoutUser());
     window.location.href = '/login';
   } else {
-    store.dispatch({ SET_AUTHENTICATED });
+    store.dispatch({ type: SET_AUTHENTICATED });
     axios.defaults.headers.common['Authorization'] = token;
     store.dispatch(getUserData());
   }
