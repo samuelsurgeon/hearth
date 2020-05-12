@@ -14,7 +14,8 @@ import LocationOn from '@material-ui/icons/LocationOn';
 import LinkIcon from '@material-ui/icons/Link';
 import CalendarToday from '@material-ui/icons/CalendarToday';
 
-const styles = {
+const styles = theme => ({
+  ...theme.spreadThis,
   paper: {
     padding: 20
   },
@@ -60,7 +61,7 @@ const styles = {
       margin: '20px 10px'
     }
   }
-}
+});
 
 class Profile extends Component {
   render() {
