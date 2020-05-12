@@ -221,14 +221,14 @@ exports.uploadImage = (req, res) => {
   busboy.on('finish', () => {
     admin
       .storage()
-      .bucket()
+      .bucket(`${config.storageBucket}`)
       .upload(imageToBeUploaded.filepath, {
         resumable: false,
         metadata: {
           metadata: {
             contentType: imageToBeUploaded.mimetype,
             //Generate token to be appended to imageUrl
-            firebaseStorageDownloadTokens: generatedToken,
+            //firebaseStorageDownloadTokens: generatedToken,
           },
         },
       })
