@@ -84,7 +84,12 @@ class Profile extends Component {
             <hr />
             {bio && <Typography variant="body2">{bio}</Typography>}
             <hr />
-            
+            {location && (
+              <Fragment>
+                <LocationOn color="primary" /> <span>{location}</span>
+                <hr />
+              </Fragment>
+            )}
           </div>
         </div>
       </Paper>
