@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Link } from 'react-router=dom';
 
 import withStyles from '@material-ui/core/styles/withStyles';
-
 import Button from '@material-ui/core/Button';
-import { connect } from 'react-redux';
+import MuiLink from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
+
+import LocationOn from '@material-ui/icons/LocationOn';
+import LinkIcon from '@material-ui/icons/Link';
+import CalendarToday from '@material-ui/icons/CalendarToday';
 
 const styles = {
   paper: {
@@ -69,6 +75,16 @@ class Profile extends Component {
         <div className={classes.profile}>
           <div className="profile-image">
             <img src={imageUrl} alt="profile" />
+          </div>
+          <hr />
+          <div className="profile-details">
+            <MuiLink component={Link} to={`/users/${handle}`} color="primary" variant="h5">
+              @{handle}
+            </MuiLink>
+            <hr />
+            {bio && <Typography variant="body2">{bio}</Typography>}
+            <hr />
+            
           </div>
         </div>
       </Paper>
