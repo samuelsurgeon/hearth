@@ -16,4 +16,13 @@ class Profile extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  user: state.user
+});
+
+Profile.PropTypes = {
+  user: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
+}
+
 export default connect(mapStateToProps)(withStyles(styles)(Profile));
