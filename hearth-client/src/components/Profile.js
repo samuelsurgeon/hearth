@@ -68,7 +68,8 @@ class Profile extends Component {
       classes, 
       user: { 
         credentials: { handle, createdAt, imageUrl, bio, website, location }, 
-        loading
+        loading,
+        authenticated
       }
     } = this.props;
 
