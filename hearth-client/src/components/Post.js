@@ -50,7 +50,19 @@ class Post extends Component {
 
   render() {
     dayjs.extend(relativeTime);
-    const { classes, post : { body, createdAt, userImage, userHandle, postId, likeCount, commentCount }, user: { authenticated } } = this.props;
+    const {
+      classes,
+      post : { 
+        body, 
+        createdAt, 
+        userImage, 
+        userHandle, 
+        postId, 
+        likeCount, 
+        commentCount 
+      },
+      user: { authenticated, credentials: { handle } }
+    } = this.props;
 
     const likeButton = !authenticated ? (
       <MyButton tip="Like">
@@ -70,6 +82,8 @@ class Post extends Component {
       )
     )
 
+    const deleteButton 
+
     return (
       <Card className={classes.card}>
         <CardMedia
@@ -83,6 +97,7 @@ class Post extends Component {
             to={`/users/${userHandle}`}
             color="primary"
           >{userHandle}</Typography>
+          {deleteButton}
           <Typography variant="body2" color="textSecondary">{dayjs(createdAt).fromNow()}</Typography>
           <Typography variant="body1">{body}</Typography>
           {likeButton}
