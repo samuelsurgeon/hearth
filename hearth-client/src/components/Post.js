@@ -84,7 +84,7 @@ class Post extends Component {
     )
 
     const deleteButton = authenticated && userHandle === handle ? (
-      <DeleteScream postId={postId} />
+      <DeletePost postId={postId} />
     ) : null
 
     return (

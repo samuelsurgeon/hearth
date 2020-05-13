@@ -12,6 +12,10 @@ import DeleteOutline from '@material-ui/icons/DeleteOutline';
 import { connect } from 'react-redux';
 import { deletePost } from '../redux/actions/dataActions';
 
+const styles = {
+
+}
+
 class DeletePost extends Component {
   state = {
     open: false
