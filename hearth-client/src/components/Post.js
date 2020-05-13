@@ -21,12 +21,12 @@ import { likePost, unlikePost } from '../redux/actions/dataActions';
 
 const styles = {
   card: {
+    position: 'relative',
     display: 'flex',
-    marginBottom: 20,
+    marginBottom: 20
   },
   image: {
     minWidth: 200,
-
   },
   content: {
     padding: 25,
