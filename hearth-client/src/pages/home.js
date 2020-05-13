@@ -11,7 +11,7 @@ import { getPosts } from '../redux/actions/dataActions';
 
 class home extends Component {
   componentDidMount() {
-    this.props.getPosts
+    this.props.getPosts();
   }
 
   render() {

@@ -1,4 +1,4 @@
-import { SET_USER, SET_AUTHENTICATED, SET_UNAUTHENTICATED, LOADING_USER, LIKE_POST } from '../types';
+import { SET_USER, SET_AUTHENTICATED, SET_UNAUTHENTICATED, LOADING_USER, LIKE_POST, UNLIKE_POST } from '../types';
 
 const initialState = {
   authenticated: false,
@@ -43,7 +43,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         likes: state.likes.filter(
-          like => like.postId === aciton.payload.postId
+          like => like.postId === action.payload.postId
         )
       };
     default:
