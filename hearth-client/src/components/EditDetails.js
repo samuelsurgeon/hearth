@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 import { connect } from 'react-redux';
-import { editUserData } from '../redux/actions/userActions';
+import { editUserDetails } from '../redux/actions/userActions';
 
 import Button from '@material-ui/core/Button';
 import Textfield from '@material-ui/core/Textfield';
@@ -13,10 +13,13 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
-import EditIcon from '@material-ui/core/iconsEdit';
+import EditIcon from '@material-ui/icons/Edit';
 
 const styles = theme => ({
-  ...theme.spreadThis
+  ...theme.spreadThis,
+  button: {
+    float: 'right'
+  }
 });
 
 class EditDetails extends Component {
@@ -27,11 +30,6 @@ class EditDetails extends Component {
     open: false
   };
 
-  componentDidMount() {
-    const { credentials } = this.props;
-    this.mapUserDetailsToState(credentials);
-  };
-
   mapUserDetailsToState = credentials => {
     this.setState({
       bio: credentials.bio ? credentials.bio : '',
@@ -40,9 +38,14 @@ class EditDetails extends Component {
     });
   };
 
+  componentDidMount() {
+    const { credentials } = this.props;
+    this.mapUserDetailsToState(credentials);
+  };
+
   handleOpen = () => {
     this.setState({ open: true });
-    this.mapUserDetailsToState(credentials);
+    this.mapUserDetailsToState(this.props.credentials);
   };
 
   handleClose = () => {
@@ -51,7 +54,7 @@ class EditDetails extends Component {
 
   handleChange = event => {
     this.setState({
-      [event.target.name]: event.target.value;
+      [event.target.name]: event.target.value
     });
   };
 
