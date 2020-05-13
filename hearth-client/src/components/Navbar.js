@@ -21,15 +21,15 @@ class Navbar extends Component {
           {authenticated ? (
             <Fragment>
               <MyButton tip="Submit a post">
-                <AddIcon color="primary" />
+                <AddIcon />
               </MyButton>
               <Link to="/">
                 <MyButton tip="Home">
-                  <HomeIcon color="primary" />
+                  <HomeIcon />
                 </MyButton>
               </Link>
               <MyButton tip="Notifications">
-                <Notifications color="primary" />
+                <Notifications />
               </MyButton>
             </Fragment>
           ) : (
