@@ -27,6 +27,11 @@ class EditDetails extends Component {
     open: false
   };
 
+  componentDidMount() {
+    const { credentials } = this.props;
+    this.mapUserDetailsToState(credentials);
+  };
+
   mapUserDetailsToState = credentials => {
     this.setState({
       bio: credentials.bio ? credentials.bio : '',
@@ -37,16 +42,11 @@ class EditDetails extends Component {
 
   handleOpen = () => {
     this.setState({ open: true });
-    mapUserDetailsToState(credentials);
+    this.mapUserDetailsToState(credentials);
   };
 
   handleClose = () => {
     this.setState({ open: false });
-  };
-
-  componentDidMount() {
-    const { credentials } = this.props;
-    mapUserDetailsToState(credentials);
   };
 
   handleChange = event => {
