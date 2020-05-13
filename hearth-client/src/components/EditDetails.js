@@ -10,7 +10,6 @@ import Textfield from '@material-ui/core/Textfield';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
@@ -28,27 +27,43 @@ class EditDetails extends Component {
     open: false
   };
 
-  handleOpen = () => {
-    this.setState({ open: true });
-    mapUserDetailsToState(credentials);
-  }
-
-  handleClose = () => {
-    this.setState({ open: false });
-  }
-
-  componentDidMount() {
-    const { credentials } = this.props;
-    mapUserDetailsToState(credentials);
-  }
-
   mapUserDetailsToState = credentials => {
     this.setState({
       bio: credentials.bio ? credentials.bio : '',
       website: credentials.website ? credentials.website : '',
       location: credentials.location ? credentials.location : ''
     });
-  }
+  };
+
+  handleOpen = () => {
+    this.setState({ open: true });
+    mapUserDetailsToState(credentials);
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
+  componentDidMount() {
+    const { credentials } = this.props;
+    mapUserDetailsToState(credentials);
+  };
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value;
+    });
+  };
+
+  handleSubmit = () => {
+    const userDetails = {
+      bio: this.state.bio,
+      website: this.state.website,
+      location: this.state.location
+    };
+    this.props.editUserDetails(userDetails);
+    this.handleClose();
+  };
 
   render() {
     const { classes } = this.props;
@@ -99,6 +114,14 @@ class EditDetails extends Component {
                 fullWidth />
             </form>
           </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleClose} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={this.handleSubmit} color="primary">
+              Save
+            </Button>
+          </DialogActions>
         </Dialog>
       </Fragment>
     )
