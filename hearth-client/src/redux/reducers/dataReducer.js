@@ -26,7 +26,7 @@ export default function (state = initialState, action) {
       return {
         ...state
       }
-    case default:
+    default:
       return state;
   }
 }
