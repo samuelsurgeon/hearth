@@ -27,7 +27,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         loading: true
-      }
+      };
     case LIKE_POST:
       return {
         ...state,
@@ -38,9 +38,14 @@ export default function (state = initialState, action) {
             postId: action.payload.postId
           }
         ]
-      }
+      };
     case UNLIKE_POST:
-
+      return {
+        ...state,
+        likes: state.likes.filter(
+          like => like.postId === aciton.payload.postId
+        )
+      };
     default:
       return state;
   }
