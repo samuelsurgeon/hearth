@@ -13,7 +13,7 @@ import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close'; 
 
 import { connect } from 'react-redux';
-import { SubmitPost } from '../redux/actions/dataActions';
+import { submitPost } from '../redux/actions/dataActions';
 
 const styles = theme => ({
   ...theme.spreadThis,
@@ -37,12 +37,33 @@ class SubmitPost extends Component {
     errors: {}
   };
 
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.UI.errors) {
+      this.setState({
+        errors: nextProps.UI.errors
+      });
+    }
+    if (!nextProps.UI.errors && !nextProps.UI.loading) {
+      this.setState({ body: '' });
+      this.handleClose();
+    }
+  }
+
   handleOpen = () => {
     this.setState({ open: true });
   }
   
   handleClose = () => {
-    this.setState({ open: false });
+    this.setState({ open: false, errors: {} });
+  }
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.submitPost({ body: this.state.body });
   }
 
   render() {
@@ -100,5 +121,7 @@ const mapStateToProps = state => ({
   UI: state.UI
 });
 
-export default connect((mapStateToProps, { SubmitPost }))(withStyles(styles)(SubmitPost));
+export default connect(mapStateToProps, { submitPost })(
+  withStyles(styles)(SubmitPost)
+);
 
