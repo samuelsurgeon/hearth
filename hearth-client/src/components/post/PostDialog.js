@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import MyButton from '../../util/MyButton';
 import LikeButton from './LikeButton';
-import Comment from './comments';
+import Comments from './Comments';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 
