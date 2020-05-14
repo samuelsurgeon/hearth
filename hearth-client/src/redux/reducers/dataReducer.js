@@ -36,7 +36,7 @@ export default function (state = initialState, action) {
     case UNLIKE_POST:
       // THIS IS MOST LIKELY WHERE THE ERROR IS!
       let index = state.posts.findIndex(post => post.postId === action.payload.postId);
-      state.posts[index] = action.payload;
+      state.posts[index].likeCount = action.payload.likeCount;
       return {
         ...state
       }
