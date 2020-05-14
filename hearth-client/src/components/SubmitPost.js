@@ -13,20 +13,22 @@ import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close'; 
 
 import { connect } from 'react-redux';
-import { submitPost } from '../redux/actions/dataActions';
+import { submitPost, clearErrors } from '../redux/actions/dataActions';
 
 const styles = theme => ({
   ...theme.spreadThis,
   submitButton: {
-    position: 'relative'
+    position: 'relative',
+    float: 'right',
+    marginTop: 10
   },
   progressSpinner: {
     position: 'absolute'
   },
   closeButton: {
     position: 'absolute',
-    left: '90%',
-    top: '10%'
+    left: '91%',
+    top: '6%'
   }
 });
 
@@ -44,8 +46,7 @@ class SubmitPost extends Component {
       });
     }
     if (!nextProps.UI.errors && !nextProps.UI.loading) {
-      this.setState({ body: '' });
-      this.handleClose();
+      this.setState({ body: '', open: false, errors: {} });
     }
   }
 
@@ -54,6 +55,7 @@ class SubmitPost extends Component {
   }
   
   handleClose = () => {
+    this.props.clearErrors();
     this.setState({ open: false, errors: {} });
   }
 
@@ -114,6 +116,7 @@ class SubmitPost extends Component {
 
 SubmitPost.propTypes = {
   submitPost: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired,
   UI: PropTypes.object.isRequired
 };
 
@@ -121,7 +124,7 @@ const mapStateToProps = state => ({
   UI: state.UI
 });
 
-export default connect(mapStateToProps, { submitPost })(
+export default connect(mapStateToProps, { submitPost, clearErrors })(
   withStyles(styles)(SubmitPost)
 );
 
