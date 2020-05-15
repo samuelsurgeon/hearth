@@ -27,17 +27,17 @@ class user extends Component {
   
   render() {
     const { posts, loading } = this.props.data;
-
+    
     const postsMarkup = loading ? (
       <p>Loading data...</p>
-    ) : posts === null ? (
+    ) : posts === null || posts.length < 1 ? (
       <p>No posts from this user</p>
     ) : (
       posts.map(post => <Post key={post.postId} post={post} />)
     );
 
     return (
-      <Grid container spacing={16}>
+      <Grid container spacing={2}>
       <Grid item sm={8} xs={12}>
         {postsMarkup}
       </Grid>
