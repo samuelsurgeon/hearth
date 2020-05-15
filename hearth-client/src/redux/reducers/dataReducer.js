@@ -35,13 +35,14 @@ export default function (state = initialState, action) {
       }
     case LIKE_POST:
     case UNLIKE_POST:
-      // THIS IS MOST LIKELY WHERE THE ERROR IS!
       let index = state.posts.findIndex(
         post => post.postId === action.payload.postId
       );
       state.posts[index] = action.payload;
       if (state.post.postId === action.payload.postId) {
+        let temp = state.post.comments;
         state.post = action.payload;
+        state.post.comments = temp;
       }
       return {
         ...state
@@ -66,9 +67,26 @@ export default function (state = initialState, action) {
         ...state,
         post: {
           ...state.post,
-          comments: [action.payload, ...state.post.comments]
+          comments: [action.payload, ...state.post.comments],
+          commentCount: state.post.commentCount + 1
         }
-      }
+      };
+      /*
+      index = state.posts.findIndex(
+        post => post.postId === action.payload.postId
+      );
+      let updatedPosts = JSON.parse(JSON.stringify(state.posts));
+      updatedPosts[index].commentCount += 1;
+      return {
+        ...state,
+        posts: updatedPosts,
+        post: {
+          ...state.post,
+          comments: [action.payload.comment, ...state.post.comments],
+          commentCount: state.post.commentCount + 1
+        }
+      };
+      */
     default:
       return state;
   }

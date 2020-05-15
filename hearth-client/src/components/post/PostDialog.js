@@ -18,7 +18,7 @@ import UnfoldMore from '@material-ui/icons/UnfoldMore';
 import ChatIcon from '@material-ui/icons/Chat';
 
 import { connect } from 'react-redux';
-import { getPost } from '../../redux/actions/dataActions';
+import { getPost, clearErrors } from '../../redux/actions/dataActions';
 
 const styles = theme => ({
   ...theme.spreadThis,
@@ -50,12 +50,15 @@ class PostDialog extends Component {
   state = {
     open: false
   }
+
   handleOpen = () => {
     this.setState({ open: true });
     this.props.getPost(this.props.postId);
   }
+
   handleClose = () => {
     this.setState({ open: false });
+    this.props.clearErrors();
   }
 
   render() {
@@ -138,6 +141,7 @@ class PostDialog extends Component {
 }
 
 PostDialog.propTypes = {
+  clearErrors: PropTypes.func.isRequired,
   getPost: PropTypes.func.isRequired,
   postId: PropTypes.string.isRequired,
   userHandle: PropTypes.string.isRequired,
@@ -151,7 +155,8 @@ const mapStateToProps = state => ({
 });
 
 const mapActionsToProps = {
-  getPost
+  getPost,
+  clearErrors
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(PostDialog));

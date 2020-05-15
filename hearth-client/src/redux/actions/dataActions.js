@@ -90,6 +90,8 @@ export const submitComment = (postId, commentData) => dispatch => {
       dispatch({
         type: SUBMIT_COMMENT,
         payload: res.data
+        //payload: { postId: postId, comment: res.data }
+        // payload: res.data
       });
       dispatch(clearErrors());
     })
