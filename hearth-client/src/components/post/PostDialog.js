@@ -51,7 +51,17 @@ class PostDialog extends Component {
     open: false
   }
 
+  componentDidMount() {
+    if (this.props.openDialog) {
+      this.handleOpen();
+    }
+  }
+
   handleOpen = () => {
+    let oldPath = window.location.pathname;
+
+    const { userHandle, postId }
+
     this.setState({ open: true });
     this.props.getPost(this.props.postId);
   }
