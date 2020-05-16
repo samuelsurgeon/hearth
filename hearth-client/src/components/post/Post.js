@@ -56,7 +56,11 @@ const styles = {
     bottom: 6
   },
   likeCount: {
-    marginRight: 10
+    marginRight: 20,
+    fontSize: '0.9rem'
+  },
+  commentCount: {
+    fontSize: '0.9rem'
   }
 }
 
@@ -104,7 +108,7 @@ class Post extends Component {
           <LikeButton postId={postId} />
           <span className={classes.likeCount}>{likeCount}</span>
           <PostDialog postId={postId} userHandle={userHandle} openDialog={this.props.openDialog} />
-          <span>{commentCount}</span>
+          <span className={classes.commentCount}>{commentCount}</span>
         </section>
       </Card>
     )
