@@ -1,4 +1,12 @@
-import { SET_USER, SET_AUTHENTICATED, SET_UNAUTHENTICATED, LOADING_USER, LIKE_POST, UNLIKE_POST } from '../types';
+import {
+  SET_USER, 
+  SET_AUTHENTICATED, 
+  SET_UNAUTHENTICATED, 
+  LOADING_USER, 
+  LIKE_POST, 
+  UNLIKE_POST,
+  MARK_NOTIFICATIONS_READ
+} from '../types';
 
 const initialState = {
   authenticated: false,
