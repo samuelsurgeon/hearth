@@ -6,7 +6,7 @@ import MyButton from '../../util/MyButton';
 import SubmitPost from '../post/SubmitPost';
 import Notifications from './Notifications';
 
-import AppBar from '@material-ui/core/AppBar';
+//import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import HomeIcon from '@material-ui/icons/Home';
@@ -16,7 +16,7 @@ class Navbar extends Component {
     const { authenticated } = this.props;
 
     return (
-      <AppBar>
+      <section>
         <Toolbar className="nav-container">
           {authenticated ? (
             <Fragment>
@@ -30,13 +30,13 @@ class Navbar extends Component {
             </Fragment>
           ) : (
             <Fragment>
-              <Button color="inherit" component={Link} to="/login">Login</Button>          
-              <Button color="inherit" component={Link} to="/">Home</Button>          
-              <Button color="inherit" component={Link} to="/signup">Signup</Button>          
+              <Button color="primary" component={Link} to="/login">Login</Button>          
+              <Button color="primary" component={Link} to="/">Home</Button>          
+              <Button color="primary" component={Link} to="/signup">Signup</Button>          
             </Fragment>
           )}
         </Toolbar>
-      </AppBar>
+      </section>
     );
   }
 }

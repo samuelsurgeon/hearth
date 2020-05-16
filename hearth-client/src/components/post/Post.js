@@ -22,14 +22,27 @@ const styles = {
   card: {
     position: 'relative',
     display: 'flex',
+    flexDirection: 'column',
+    padding: 20,
     marginBottom: 20
   },
+  heading: {
+    display: 'flex',
+  },
+  nameDate: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginLeft: 15
+  },
   image: {
-    minWidth: 200,
+    minWidth: 50,
+    minHeight: 50,
+    maxHeight: 50,
+    maxWidth: 50,
+    borderRadius: '50%'
   },
   content: {
-    padding: 25,
-    objectFit: 'cover'
+    padding: 0
   }
 }
 
@@ -56,26 +69,30 @@ class Post extends Component {
 
     return (
       <Card className={classes.card}>
-        <CardMedia
-        image={userImage}
-        title="Profile image"
-        className={classes.image} />
+        <section className={classes.heading}>
+          <CardMedia
+          image={userImage}
+          title="Profile image"
+          className={classes.image} />
+          <section className={classes.nameDate}>
+            <Typography 
+              variant="h5" 
+              component={Link} 
+              to={`/users/${userHandle}`}
+              color="primary"
+            >{userHandle}</Typography>
+            <Typography variant="body2" color="textSecondary">{dayjs(createdAt).fromNow()}</Typography>
+          </section>
+        </section>
         <CardContent className={classes.content}>
-          <Typography 
-            variant="h5" 
-            component={Link} 
-            to={`/users/${userHandle}`}
-            color="primary"
-          >{userHandle}</Typography>
           {deleteButton}
-          <Typography variant="body2" color="textSecondary">{dayjs(createdAt).fromNow()}</Typography>
           <Typography variant="body1">{body}</Typography>
-          <LikeButton postId={postId} />
-          <span>{likeCount} Likes</span>
+          <LikeButton className={classes.likeButton} postId={postId} />
+          <span>{likeCount}</span>
           <MyButton tip="comments">
             <ChatIcon color="primary" />
           </MyButton>
-          <span>{commentCount} comments</span>
+          <span>{commentCount}</span>
           <PostDialog postId={postId} userHandle={userHandle} openDialog={this.props.openDialog} />
         </CardContent>
       </Card>
