@@ -26,7 +26,7 @@ const styles = {
     justifyContent: 'space-between',
     padding: 8,
     marginBottom: 20,
-    borderRadius: 10
+    borderRadius: 8
   },
   heading: {
     display: 'flex',
@@ -50,6 +50,13 @@ const styles = {
   },
   body: {
     padding: '6px 12px 6px 12px',
+  },
+  createdAt: {
+    position: 'relative',
+    bottom: 6
+  },
+  likeCount: {
+    marginRight: 10
   }
 }
 
@@ -88,14 +95,14 @@ class Post extends Component {
               to={`/users/${userHandle}`}
               color="primary"
             >{userHandle}</Typography>
-            <Typography variant="body2" color="textSecondary">{dayjs(createdAt).fromNow()}</Typography>
+            <Typography variant="body2" color="textSecondary" className={classes.createdAt}>{dayjs(createdAt).fromNow()}</Typography>
           </section>
         </section>
         <section className={classes.content}>
           {deleteButton}
           <Typography variant="body2" className={classes.body}>{body}</Typography>
           <LikeButton postId={postId} />
-          <span>{likeCount}</span>
+          <span className={classes.likeCount}>{likeCount}</span>
           <PostDialog postId={postId} userHandle={userHandle} openDialog={this.props.openDialog} />
           <span>{commentCount}</span>
         </section>
