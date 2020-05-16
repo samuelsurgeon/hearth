@@ -23,11 +23,14 @@ const styles = {
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    padding: 20,
-    marginBottom: 20
+    justifyContent: 'space-between',
+    padding: 8,
+    marginBottom: 20,
+    borderRadius: 10
   },
   heading: {
     display: 'flex',
+    padding: 12
   },
   nameDate: {
     display: 'flex',
@@ -42,7 +45,11 @@ const styles = {
     borderRadius: '50%'
   },
   content: {
-    padding: 0
+    padding: 0,
+    margin: 0
+  },
+  body: {
+    padding: '6px 12px 6px 12px',
   }
 }
 
@@ -68,7 +75,7 @@ class Post extends Component {
     ) : null
 
     return (
-      <Card className={classes.card}>
+      <Card className={classes.card} postId={postId} userHandle={userHandle} openDialog={this.props.openDialog}>
         <section className={classes.heading}>
           <CardMedia
           image={userImage}
@@ -76,7 +83,7 @@ class Post extends Component {
           className={classes.image} />
           <section className={classes.nameDate}>
             <Typography 
-              variant="h5" 
+              variant="h6" 
               component={Link} 
               to={`/users/${userHandle}`}
               color="primary"
@@ -84,17 +91,14 @@ class Post extends Component {
             <Typography variant="body2" color="textSecondary">{dayjs(createdAt).fromNow()}</Typography>
           </section>
         </section>
-        <CardContent className={classes.content}>
+        <section className={classes.content}>
           {deleteButton}
-          <Typography variant="body1">{body}</Typography>
-          <LikeButton className={classes.likeButton} postId={postId} />
+          <Typography variant="body2" className={classes.body}>{body}</Typography>
+          <LikeButton postId={postId} />
           <span>{likeCount}</span>
-          <MyButton tip="comments">
-            <ChatIcon color="primary" />
-          </MyButton>
-          <span>{commentCount}</span>
           <PostDialog postId={postId} userHandle={userHandle} openDialog={this.props.openDialog} />
-        </CardContent>
+          <span>{commentCount}</span>
+        </section>
       </Card>
     )
   }

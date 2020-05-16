@@ -35,10 +35,6 @@ const styles = theme => ({
     position: 'absolute',
     left: '90%'
   },
-  expandButton: {
-    position: 'absolute',
-    left: '90%'
-  },
   spinnerDiv: {
     textAlign: 'center',
     marginTop: 50,
@@ -97,7 +93,7 @@ class PostDialog extends Component {
 
     const dialogMarkup = loading ? (
       <div className={classes.spinnerDiv}>
-        <CircularProgress size={200} thickness={2} />
+        <CircularProgress size={50} thickness={2} />
       </div>
     ) : (
       <Grid container spacing={16}>
@@ -136,7 +132,7 @@ class PostDialog extends Component {
     return (
       <Fragment>
         <MyButton onClick={this.handleOpen} tip="Expand post" tipClassName={classes.expandButton}>
-          <UnfoldMore color="primary" />
+          <ChatIcon color="primary" />
         </MyButton>
         <Dialog
           open={this.state.open}
