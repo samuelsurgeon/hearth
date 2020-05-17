@@ -25,8 +25,10 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'space-between',
     padding: 8,
-    marginBottom: 20,
-    borderRadius: 8
+    marginBottom: 15,
+    borderRadius: 8,
+    backgroundColor: '#FFF',
+    boxShadow:'0 2.8px 2.2px rgba(0, 0, 0, 0.01), 0 6.7px 5.3px rgba(0, 0, 0, 0.03), 0 12.5px 10px rgba(0, 0, 0, 0.005), 0 22.3px 17.9px rgba(0, 0, 0, 0.01), 0 41.8px 33.4px rgba(0, 0, 0, 0.01), 0 100px 80px rgba(0, 0, 0, 0.02)'
   },
   heading: {
     display: 'flex',
@@ -86,7 +88,7 @@ class Post extends Component {
     ) : null
 
     return (
-      <Card className={classes.card} postId={postId} userHandle={userHandle} openDialog={this.props.openDialog}>
+      <section className={classes.card}>
         <section className={classes.heading}>
           <CardMedia
           image={userImage}
@@ -105,12 +107,12 @@ class Post extends Component {
         <section className={classes.content}>
           {deleteButton}
           <Typography variant="body2" className={classes.body}>{body}</Typography>
-          <LikeButton postId={postId} />
+          <LikeButton postId={postId} size="small" className={classes.likeButton} />
           <span className={classes.likeCount}>{likeCount}</span>
           <PostDialog postId={postId} userHandle={userHandle} openDialog={this.props.openDialog} />
           <span className={classes.commentCount}>{commentCount}</span>
         </section>
-      </Card>
+      </section>
     )
   }
 }
