@@ -9,15 +9,25 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .container {
   margin: 20px 0 0 0;
   max-width: 1200px;
 }
 
-.nav-container {
+.nav-wrapper {
   display: flex;
   justify-content: flex-end;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
   margin-top: 15px;
+  width: 160px;
 }
 
 .nav-container svg {

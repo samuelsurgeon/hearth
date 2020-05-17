@@ -8,19 +8,22 @@ import Notifications from './Notifications';
 
 //import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import HomeIcon from '@material-ui/icons/Home';
+import HomeIcon from '@material-ui/icons/Refresh';
 
 class Navbar extends Component {
   render() {
     const { authenticated } = this.props;
 
     return (
-      <section>
+      <section className="nav-wrapper">
         <section className="nav-container">
           {authenticated ? (
             <Fragment>
               <SubmitPost />
               <Link to="/">
+                <MyButton tip="Home">
+                  <HomeIcon />
+                </MyButton>
               </Link>
               <Notifications />
             </Fragment>

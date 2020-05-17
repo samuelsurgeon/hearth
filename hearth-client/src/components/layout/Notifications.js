@@ -11,7 +11,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import Badge from '@material-ui/core/Badge';
 
-import NotificationsIcon from '@material-ui/icons/Public';
+import NotificationsIcon from '@material-ui/icons/Menu';
 import FavouriteIcon from '@material-ui/icons/Favorite';
 import ChatIcon from '@material-ui/icons/Chat';
 
@@ -95,7 +95,7 @@ class Notifications extends Component {
         <Tooltip placement="top" title="Notifications">
           <IconButton aria-owns={anchorEl ? 'simple-menu' : undefined}
             aria-haspopup="true"
-            style={{ backgroundColor: 'white', boxShadow: '0 2.8px 2.2px rgba(0, 0, 0, 0.08), 0 2.8px 2.2px rgba(0, 0, 0, 0.08), 0 0 2.2px 2px rgba(0, 0, 0, 0.04)', marginLeft: 5 }}
+            style={{ backgroundColor: 'white', boxShadow: '0 2.8px 2.2px rgba(0, 0, 0, 0.08), 0 2.8px 2.2px rgba(0, 0, 0, 0.08), 0 0 2.2px 2px rgba(0, 0, 0, 0.04)' }}
             onClick={this.handleOpen}>
             {notificationsIcon}
           </IconButton>

@@ -16,7 +16,7 @@ const styles = {
   deleteButton: {
     position: 'absolute',
     left: '82%',
-    top: '8%'
+    top: '7%'
   }
 }
 
