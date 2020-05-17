@@ -14,7 +14,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
-import ChatIcon from '@material-ui/icons/Chat';
+import ChatIcon from '@material-ui/icons/ChatBubble';
 
 import { connect } from 'react-redux';
 
@@ -58,10 +58,14 @@ const styles = {
     bottom: 6
   },
   likeCount: {
-    marginRight: 20,
+    position: 'relative',
+    right: 7.5,
+    marginRight: 10,
     fontSize: '0.9rem'
   },
   commentCount: {
+    position: 'relative',
+    right: 5,
     fontSize: '0.9rem'
   }
 }
@@ -107,7 +111,7 @@ class Post extends Component {
         <section className={classes.content}>
           {deleteButton}
           <Typography variant="body2" className={classes.body}>{body}</Typography>
-          <LikeButton postId={postId} size="small" className={classes.likeButton} />
+          <LikeButton postId={postId} className={classes.likeButton} />
           <span className={classes.likeCount}>{likeCount}</span>
           <PostDialog postId={postId} userHandle={userHandle} openDialog={this.props.openDialog} />
           <span className={classes.commentCount}>{commentCount}</span>

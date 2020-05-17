@@ -15,7 +15,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import UnfoldMore from '@material-ui/icons/UnfoldMore';
-import ChatIcon from '@material-ui/icons/Chat';
+import ChatIcon from '@material-ui/icons/ChatBubbleOutline';
 
 import { connect } from 'react-redux';
 import { getPost, clearErrors } from '../../redux/actions/dataActions';
