@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -12,12 +12,6 @@ import SubmitPost from '../components/post/SubmitPost';
 
 import { connect } from 'react-redux';
 import { getPosts } from '../redux/actions/dataActions';
-
-const styles = {
-  textField: {
-    marginBottom: 100
-  }
-}
 
 class home extends Component {
   componentDidMount() {
@@ -37,21 +31,6 @@ class home extends Component {
     );
 
     return (
-      <Fragment>
-      <form onSubmit={this.handleSubmit} className={classes.textField}>
-              <TextField
-                name="body"
-                type="text"
-                label="What's on your mind?"
-                variant="outlined"
-                multiline
-                rows="3"
-                error={errors.body ? true : false}
-                helperText={errors.body}
-                className={classes.textItself}
-                onChange={this.handleChange}
-                fullWidth />
-      </form>
       <Grid container spacing={2}>
         <Grid item sm={8} xs={12}>
           {recentPostsMarkup}
@@ -60,7 +39,6 @@ class home extends Component {
           <Profile />
         </Grid>
       </Grid>
-      </Fragment>
     );
   }
 }
@@ -74,4 +52,4 @@ const mapStateToProps = state => ({
   data: state.data
 });
 
-export default connect(mapStateToProps, { getPosts })(withStyles(styles)(home));
+export default connect(mapStateToProps, { getPosts })(home);
