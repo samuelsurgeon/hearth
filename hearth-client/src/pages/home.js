@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -11,6 +12,12 @@ import SubmitPost from '../components/post/SubmitPost';
 
 import { connect } from 'react-redux';
 import { getPosts } from '../redux/actions/dataActions';
+
+const styles = {
+  textField: {
+    marginBottom: 100
+  }
+}
 
 class home extends Component {
   componentDidMount() {
@@ -31,26 +38,19 @@ class home extends Component {
 
     return (
       <Fragment>
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className={classes.textField}>
               <TextField
                 name="body"
                 type="text"
-                label="Post!"
+                label="What's on your mind?"
+                variant="outlined"
                 multiline
                 rows="3"
-                placeholder="Say hi to your friends"
                 error={errors.body ? true : false}
                 helperText={errors.body}
-                className={classes.textField}
+                className={classes.textItself}
                 onChange={this.handleChange}
                 fullWidth />
-              <Button type="submit" variant="contained" color="primary"
-                className={classes.submitButton} disabled={loading}>
-                Submit
-                {loading && (
-                  <CircularProgress size={30} className={classes.progressSpinner} />
-                )}
-              </Button>
       </form>
       <Grid container spacing={2}>
         <Grid item sm={8} xs={12}>
@@ -74,4 +74,4 @@ const mapStateToProps = state => ({
   data: state.data
 });
 
-export default connect(mapStateToProps, { getPosts })(home);
+export default connect(mapStateToProps, { getPosts })(withStyles(styles)(home));
