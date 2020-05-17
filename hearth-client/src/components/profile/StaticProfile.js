@@ -15,7 +15,9 @@ import CalendarToday from '@material-ui/icons/CalendarToday';
 const styles = theme => ({
   ...theme.spreadThis,
   paper: {
-    padding: 20
+    paddingBottom: 30,
+    backgroundColor: '#FFF',
+    borderRadius: 15
   },
   profile: {
     '& .image-wrapper': {
@@ -23,13 +25,15 @@ const styles = theme => ({
       position: 'relative'
     },
     '& .profile-image': {
-      width: 200,
+      width: '100%',
       height: 200,
       objectFit: 'cover',
       maxWidth: '100%',
-      borderRadius: '50%'
+      borderTopLeftRadius: 15,
+      borderTopRightRadius: 15
     },
     '& .profile-details': {
+      paddingTop: 10,
       textAlign: 'center',
       '& span, svg': {
         verticalAlign: 'middle'
@@ -49,15 +53,15 @@ const StaticProfile = props => {
   const { classes, profile: { handle, createdAt, imageUrl, bio, website, location } } = props;
 
   return (
-    <Paper className={classes.paper}>
+    <section className={classes.paper}>
         <div className={classes.profile}>
           <div className="image-wrapper">
             <img src={imageUrl} alt="profile" className="profile-image" />
           </div>
           <hr />
           <div className="profile-details">
-            <MuiLink component={Link} to={`/users/${handle}`} color="primary" variant="h5">
-              @{handle}
+            <MuiLink component={Link} to={`/users/${handle}`} color="primary" variant="h4">
+              {handle}
             </MuiLink>
             <hr />
             {bio && <Typography variant="body2">{bio}</Typography>}
@@ -81,7 +85,7 @@ const StaticProfile = props => {
           <span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
           </div>
         </div>
-      </Paper>
+      </section>
   );
 }
 
