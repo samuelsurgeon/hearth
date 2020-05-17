@@ -23,7 +23,9 @@ import { logoutUser, uploadImage } from '../../redux/actions/userActions';
 const styles = theme => ({
   ...theme.spreadThis,
   paper: {
-    padding: 20
+    padding: 20,
+    backgroundColor: 'white',
+    borderRadius: 20
   },
   profile: {
     '& .image-wrapper': {
@@ -97,7 +99,7 @@ class Profile extends Component {
     } = this.props;
 
     let profileMarkup = !loading ? (authenticated ? (
-      <Paper className={classes.paper}>
+      <section className={classes.paper}>
         <div className={classes.profile}>
           <div className="image-wrapper">
             <img src={imageUrl} alt="profile" className="profile-image" />
@@ -137,9 +139,9 @@ class Profile extends Component {
           </MyButton>
           <EditDetails />
         </div>
-      </Paper>
+      </section>
     ) : (
-      <Paper className={classes.paper}>
+      <section className={classes.paper}>
         <Typography variant="body2" align="center">
           No profile found, please login again
         </Typography>
@@ -151,7 +153,7 @@ class Profile extends Component {
             Signup
           </Button>
         </div>
-      </Paper>
+      </section>
     )) : (<p>Loading...</p>);
     return profileMarkup;
   }

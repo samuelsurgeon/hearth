@@ -7,7 +7,6 @@ import SubmitPost from '../post/SubmitPost';
 import Notifications from './Notifications';
 
 //import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import HomeIcon from '@material-ui/icons/Home';
 
@@ -17,14 +16,11 @@ class Navbar extends Component {
 
     return (
       <section>
-        <Toolbar className="nav-container">
+        <section className="nav-container">
           {authenticated ? (
             <Fragment>
               <SubmitPost />
               <Link to="/">
-                <MyButton tip="Home">
-                  <HomeIcon />
-                </MyButton>
               </Link>
               <Notifications />
             </Fragment>
@@ -35,7 +31,7 @@ class Navbar extends Component {
               <Button color="primary" component={Link} to="/signup">Signup</Button>          
             </Fragment>
           )}
-        </Toolbar>
+        </section>
       </section>
     );
   }

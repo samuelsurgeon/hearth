@@ -24,15 +24,15 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    padding: 8,
+    padding: 20,
     marginBottom: 15,
-    borderRadius: 8,
+    borderRadius: 20,
     backgroundColor: '#FFF',
     boxShadow:'0 2.8px 2.2px rgba(0, 0, 0, 0.01), 0 6.7px 5.3px rgba(0, 0, 0, 0.03), 0 12.5px 10px rgba(0, 0, 0, 0.005), 0 22.3px 17.9px rgba(0, 0, 0, 0.01), 0 41.8px 33.4px rgba(0, 0, 0, 0.01), 0 100px 80px rgba(0, 0, 0, 0.02)'
   },
   heading: {
     display: 'flex',
-    padding: 12
+    paddingBottom: 10
   },
   nameDate: {
     display: 'flex',
@@ -51,7 +51,7 @@ const styles = {
     margin: 0
   },
   body: {
-    padding: '6px 12px 6px 12px',
+    padding: '6px 2px 15px 2px',
   },
   createdAt: {
     position: 'relative',
@@ -59,13 +59,13 @@ const styles = {
   },
   likeCount: {
     position: 'relative',
-    right: 7.5,
-    marginRight: 10,
+    left: 8,
+    marginRight: 35,
     fontSize: '0.9rem'
   },
   commentCount: {
     position: 'relative',
-    right: 5,
+    left: 8,
     fontSize: '0.9rem'
   }
 }

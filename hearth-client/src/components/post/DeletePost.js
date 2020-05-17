@@ -15,8 +15,8 @@ import { deletePost } from '../../redux/actions/dataActions';
 const styles = {
   deleteButton: {
     position: 'absolute',
-    left: '90%',
-    top: '10%'
+    left: '82%',
+    top: '8%'
   }
 }
 

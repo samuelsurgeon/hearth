@@ -9,7 +9,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import AddIcon from '@material-ui/icons/Add';
+import AddIcon from '@material-ui/icons/Spa';
 import CloseIcon from '@material-ui/icons/Close'; 
 
 import { connect } from 'react-redux';
