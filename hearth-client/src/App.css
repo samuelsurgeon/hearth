@@ -34,3 +34,11 @@ a:hover {
   color: #333333;
 }
 
+.MuiPaper-rounded {
+    border-radius: 15px !important;
+}
+
+.MuiPopover-paper {
+    left: 8px !important;
+    max-width: calc(100% - 16px) !important;
+}

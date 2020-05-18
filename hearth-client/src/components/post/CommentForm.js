@@ -11,7 +11,6 @@ import { submitComment } from '../../redux/actions/dataActions';
 
 const styles = theme => ({
   ...theme.spreadThis,
-
 });
 
 class CommentForm extends Component {
@@ -43,7 +42,7 @@ class CommentForm extends Component {
     const errors = this.state.errors;
 
     const CommentFormMarkup = authenticated ? (
-      <Grid item sm={12} style={{ textAlign: 'center', marginTop: 15, marginBottom: 20 }}>
+      <Grid item sm={12} style={{ textAlign: 'center', marginTop: 15, marginBottom: 10 }}>
         <form onSubmit={this.handleSubmit}>
           <TextField
             name="body"

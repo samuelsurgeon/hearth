@@ -101,6 +101,7 @@ class Notifications extends Component {
           </IconButton>
         </Tooltip>
         <Menu
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={this.handleClose}

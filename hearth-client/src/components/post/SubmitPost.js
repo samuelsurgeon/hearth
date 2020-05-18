@@ -17,18 +17,29 @@ import { submitPost, clearErrors } from '../../redux/actions/dataActions';
 
 const styles = theme => ({
   ...theme.spreadThis,
+  root: {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+  },
+  paper: {
+    borderRadius: 15,
+    backgroundColor: 'white',
+    overflowX: 'hidden',
+    minWidth: '95%',
+    maxWidth: '95%'
+  },
   submitButton: {
     position: 'relative',
     float: 'right',
-    marginTop: 10
+    marginTop: 10,
+    marginBottom: 15
   },
   progressSpinner: {
     position: 'absolute'
   },
   closeButton: {
     position: 'absolute',
-    left: '91%',
-    top: '6%'
+    left: '82%',
+    top: '6.5%'
   }
 });
 
@@ -79,27 +90,31 @@ class SubmitPost extends Component {
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
+          classes={{
+            root: classes.root,
+            paper: classes.paper
+          }}
           fullWidth
           maxWidth="sm">
           <MyButton tip="Close" onClick={this.handleClose} tipClassName={classes.closeButton}>
             <CloseIcon />
           </MyButton>
-          <DialogTitle>Submit a new post</DialogTitle>
+          <DialogTitle style={{ position: 'relative', top: 10, width: '60%' }}>Submit a new post</DialogTitle>
           <DialogContent>
             <form onSubmit={this.handleSubmit}>
               <TextField
                 name="body"
                 type="text"
-                label="Post!"
                 multiline
                 rows="3"
-                placeholder="Say hi to your friends"
+                variant="outlined"
+                placeholder="What's on your mind?"
                 error={errors.body ? true : false}
                 helperText={errors.body}
                 className={classes.textField}
                 onChange={this.handleChange}
                 fullWidth />
-              <Button type="submit" variant="contained" color="primary"
+              <Button type="submit" variant="outlined" color="primary"
                 className={classes.submitButton} disabled={loading}>
                 Submit
                 {loading && (
