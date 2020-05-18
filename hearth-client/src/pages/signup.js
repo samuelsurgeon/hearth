@@ -13,7 +13,21 @@ import { connect } from 'react-redux';
 import { signupUser } from '../redux/actions/userActions';
 
 const styles = theme => ({
-  ...theme.spreadThis
+  ...theme.spreadThis,
+  pageTitle: {
+    marginTop: 110
+  },
+  textField: {
+    width: '90%',
+    marginTop: 20
+  },
+  button: {
+    marginTop: 25,
+    marginBottom: 25
+  },
+  hereLink: {
+    color: 'grey'
+  }
 });
 
 class signup extends Component {
@@ -69,6 +83,7 @@ class signup extends Component {
               name="email" 
               type="email" 
               label="E-mail" 
+              variant="outlined"
               className={classes.textField} 
               helperText={errors.email}
               error={errors.email ? true : false}
@@ -80,6 +95,7 @@ class signup extends Component {
               name="password" 
               type="password" 
               label="Password" 
+              variant="outlined"
               className={classes.textField} 
               helperText={errors.password}
               error={errors.password ? true : false}
@@ -91,6 +107,7 @@ class signup extends Component {
               name="confirmPassword" 
               type="password" 
               label="Confirm Password" 
+              variant="outlined"
               className={classes.textField} 
               helperText={errors.confirmPassword}
               error={errors.confirmPassword ? true : false}
@@ -102,6 +119,7 @@ class signup extends Component {
               name="handle" 
               type="text" 
               label="Handle" 
+              variant="outlined"
               className={classes.textField} 
               helperText={errors.handle}
               error={errors.handle ? true : false}
@@ -115,7 +133,7 @@ class signup extends Component {
             )}
             <Button 
               type="submit" 
-              variant="contained" 
+              variant="outlined" 
               color="primary" 
               className={classes.button}
               disabled={loading} >
@@ -125,7 +143,7 @@ class signup extends Component {
             )}
             </Button>
             <br />
-            <small>Already have an account? Login <Link to="/login">here</Link></small>
+            <small>Already have an account? Login <Link to="/login" className={classes.hereLink}>here</Link></small>
           </form>
         </Grid>
         <Grid item sm /> 

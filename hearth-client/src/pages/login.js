@@ -14,9 +14,19 @@ import { loginUser } from '../redux/actions/userActions';
 
 const styles = theme => ({
   ...theme.spreadThis,
+  pageTitle: {
+    marginTop: 200
+  },
   textField: {
     width: '90%',
-    marginTop: 15
+    marginTop: 30
+  },
+  button: {
+    marginTop: 25,
+    marginBottom: 20
+  },
+  hereLink: {
+    color: 'grey'
   }
 });
 
@@ -92,7 +102,7 @@ class login extends Component {
             )}
             <Button 
               type="submit" 
-              variant="contained" 
+              variant="outlined"
               color="primary" 
               className={classes.button}
               disabled={loading} >
@@ -102,7 +112,7 @@ class login extends Component {
             )}
             </Button>
             <br />
-            <small>Don't have an account? Sign up <Link to="/signup">here</Link></small>
+            <small>Don't have an account? Sign up <Link to="/signup" className={classes.hereLink}>here</Link></small>
           </form>
         </Grid>
         <Grid item sm /> 
