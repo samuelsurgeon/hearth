@@ -17,7 +17,14 @@ import EditIcon from '@material-ui/icons/Notes';
 const styles = theme => ({
   ...theme.spreadThis,
   button: {
-    float: 'right'
+    float: 'right',
+  },
+  closeButton: {
+    marginBottom: 20
+  },
+  submitButton: {
+    marginRight: 15,
+    marginBottom: 20
   }
 });
 
@@ -87,8 +94,9 @@ class EditDetails extends Component {
                 name="bio"
                 type="text"
                 label="Bio"
+                variant="outlined"
                 multiline
-                rows="3"
+                rows="2"
                 placeholders="A short bio about yourself"
                 className={classes.textField}
                 value={this.state.bio}
@@ -98,6 +106,7 @@ class EditDetails extends Component {
                 name="website"
                 type="text"
                 label="Website"
+                variant="outlined"
                 placeholders="Your personal website"
                 className={classes.textField}
                 value={this.state.website}
@@ -107,6 +116,7 @@ class EditDetails extends Component {
                 name="location"
                 type="text"
                 label="Location"
+                variant="outlined"
                 placeholders="Where you live"
                 className={classes.textField}
                 value={this.state.location}
@@ -115,10 +125,10 @@ class EditDetails extends Component {
             </form>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleClose} variant="outlined" color="primary" className={classes.closeButton}>
               Cancel
             </Button>
-            <Button onClick={this.handleSubmit} color="primary">
+            <Button onClick={this.handleSubmit} variant="outlined" color="primary" className={classes.submitButton}>
               Save
             </Button>
           </DialogActions>
