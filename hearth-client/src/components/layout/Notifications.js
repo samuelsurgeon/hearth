@@ -13,7 +13,7 @@ import Badge from '@material-ui/core/Badge';
 
 import NotificationsIcon from '@material-ui/icons/Menu';
 import FavouriteIcon from '@material-ui/icons/Favorite';
-import ChatIcon from '@material-ui/icons/Chat';
+import ChatIcon from '@material-ui/icons/ChatBubble';
 
 import { connect } from 'react-redux';
 import { markNotificationsRead } from '../../redux/actions/userActions';
@@ -62,7 +62,7 @@ class Notifications extends Component {
     let notificationsMarkup =
       notifications && notifications.length > 0 ? (
         notifications.map(not => {
-          const verb = not.type === 'like' ? 'liked' : 'commented on';
+          const verb = not.type === 'like' ? 'liked your post' : 'left you a comment';
           const time = dayjs(not.createdAt).fromNow();
           const iconColour = not.read ? 'primary' : 'secondary';
           const icon = not.type === 'like' ? (
@@ -76,10 +76,10 @@ class Notifications extends Component {
               {icon}
               <Typography
                 component={Link}
-                color="default"
-                variant="body1"
+                color="primary"
+                variant="body2"
                 to={`/users/${not.recipient}/post/${not.postId}`}>
-                {not.sender} {verb} your post {time}
+                {not.sender} {verb} {time}
               </Typography>
             </MenuItem>
           )

@@ -39,6 +39,7 @@ a:hover {
 }
 
 .MuiPopover-paper {
-    left: 8px !important;
+    position: 'absolute';
+    left: calc(100% - 368px) !important;
     max-width: calc(100% - 16px) !important;
 }
