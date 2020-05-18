@@ -28,7 +28,7 @@ const styles = theme => ({
   paper: {
     borderRadius: 15,
     backgroundColor: 'white',
-    overflow-x: 'hidden',
+    overflowX: 'hidden',
     minWidth: '95%',
     maxWidth: '95%'
   },
@@ -36,6 +36,7 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
+    paddingRight: 40,
     marginBottom: 15,
   },
   heading: {
@@ -59,11 +60,11 @@ const styles = theme => ({
     margin: 0
   },
   body: {
-    padding: '6px 2px 15px 2px',
+    padding: '0px 2px 20px 2px',
   },
   createdAt: {
     position: 'relative',
-    bottom: 10
+    bottom: 3
   },
   likeCount: {
     position: 'relative',
@@ -83,13 +84,16 @@ const styles = theme => ({
   },
   closeButton: {
     position: 'absolute',
-    top: '10%',
-    left: '80%'
+    top: '2.7%',
+    left: '82%'
   },
   spinnerDiv: {
     textAlign: 'center',
     marginTop: 50,
     marginBottom: 50
+  },
+  visibleSeparator: {
+    marginTop: 30
   }
 });
 
@@ -158,14 +162,13 @@ class PostDialog extends Component {
               to={`/users/${userHandle}`}>
               {userHandle}
               </Typography>
-              <hr className={classes.invisibleSeparator} />
               <Typography variant="body2" color="textSecondary" className={classes.createdAt}>
                 {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
               </Typography>
           </section>
         </section>
         <section className={classes.content}>
-          <Typography variant="body2">
+          <Typography variant="body2" className={classes.body}>
             {body}
           </Typography>
           <LikeButton postId={postId} className={classes.likeButton} />
@@ -175,7 +178,6 @@ class PostDialog extends Component {
           </MyButton>
           <span className={classes.commentCount}>{commentCount} comments</span>
         </section>
-        <hr className={classes.visibleSeparator} />
         <CommentForm postId={postId} />
         <Comments comments={comments} />
       </section>
