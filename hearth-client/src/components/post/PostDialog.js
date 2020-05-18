@@ -22,18 +22,69 @@ import { getPost, clearErrors } from '../../redux/actions/dataActions';
 
 const styles = theme => ({
   ...theme.spreadThis,
+  root: {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+  },
+  paper: {
+    borderRadius: 15,
+    backgroundColor: 'white',
+    overflow-x: 'hidden',
+    minWidth: '95%',
+    maxWidth: '95%'
+  },
+  card: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    marginBottom: 15,
+  },
+  heading: {
+    display: 'flex',
+    paddingBottom: 10
+  },
+  nameDate: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginLeft: 15
+  },
   profileImage: {
-    maxWidth: 200,
-    height: 200,
-    borderRadius: '50%',
-    objectFit: 'cover'
+    minWidth: 50,
+    minHeight: 50,
+    maxHeight: 50,
+    maxWidth: 50,
+    borderRadius: '50%'
+  },
+  content: {
+    padding: 0,
+    margin: 0
+  },
+  body: {
+    padding: '6px 2px 15px 2px',
+  },
+  createdAt: {
+    position: 'relative',
+    bottom: 10
+  },
+  likeCount: {
+    position: 'relative',
+    left: 8,
+    marginRight: 35,
+    fontSize: '0.9rem'
+  },
+  commentCount: {
+    position: 'relative',
+    left: 8,
+    fontSize: '0.9rem'
   },
   dialogContent: {
-    padding: 20
+    padding: 20,
+    borderRadius: 100,
+    width: '100%'
   },
   closeButton: {
     position: 'absolute',
-    left: '90%'
+    top: '10%',
+    left: '80%'
   },
   spinnerDiv: {
     textAlign: 'center',
@@ -96,37 +147,38 @@ class PostDialog extends Component {
         <CircularProgress size={50} thickness={2} />
       </div>
     ) : (
-      <Grid container spacing={16}>
-        <Grid item sm={5}>
+      <section container spacing={2} className={classes.card} scroll="no">
+        <section className={classes.heading}>
           <img src={userImage} alt="Profile" className={classes.profileImage} />
-        </Grid>
-        <Grid item sm={7}>
-          <Typography
-            component={Link}
-            color="primary"
-            variant="h5"
-            to={`/users/${userHandle}`}>
-            @{userHandle}
-            <hr className={classes.invisibleSeparator} />
-            <Typography variant="body2" color="textSecondary">
-              {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
-            </Typography>
-            <hr className={classes.invisibleSeparator} />
-            <Typography variant="body1">
-              {body}
-            </Typography>
+          <section className={classes.nameDate}>
+            <Typography
+              component={Link}
+              color="primary"
+              variant="h5"
+              to={`/users/${userHandle}`}>
+              {userHandle}
+              </Typography>
+              <hr className={classes.invisibleSeparator} />
+              <Typography variant="body2" color="textSecondary" className={classes.createdAt}>
+                {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
+              </Typography>
+          </section>
+        </section>
+        <section className={classes.content}>
+          <Typography variant="body2">
+            {body}
           </Typography>
-          <LikeButton postId={postId} />
-          <span>{likeCount} likes</span>
+          <LikeButton postId={postId} className={classes.likeButton} />
+          <span className={classes.likeCount}>{likeCount}</span>
           <MyButton tip="comments">
             <ChatIcon color="primary" />
           </MyButton>
-          <span>{commentCount} comments</span>
-        </Grid>
+          <span className={classes.commentCount}>{commentCount} comments</span>
+        </section>
         <hr className={classes.visibleSeparator} />
         <CommentForm postId={postId} />
         <Comments comments={comments} />
-      </Grid>
+      </section>
     )
 
     return (
@@ -137,17 +189,21 @@ class PostDialog extends Component {
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
+          classes={{
+            root: classes.root,
+            paper: classes.paper
+          }}
           fullWidth
-          maxWidth="sm">
+          maxWidth="xs">
           <MyButton
             tip="Close"
             onClick={this.handleClose}
             tipClassName={classes.closeButton}>
             <CloseIcon />
           </MyButton>
-          <DialogContent className={classes.dialogContent}>
+          <section className={classes.dialogContent}>
             {dialogMarkup}
-          </DialogContent>
+          </section>
         </Dialog>
       </Fragment>
     );
