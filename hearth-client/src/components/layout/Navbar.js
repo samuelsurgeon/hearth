@@ -29,9 +29,13 @@ class Navbar extends Component {
             </Fragment>
           ) : (
             <Fragment>
-              <Button color="primary" component={Link} to="/login">Login</Button>          
-              <Button color="primary" component={Link} to="/">Home</Button>          
-              <Button color="primary" component={Link} to="/signup">Signup</Button>          
+              <SubmitPost />
+              <Link to="/">
+                <MyButton tip="Home">
+                  <HomeIcon />
+                </MyButton>
+              </Link>
+              <Notifications />
             </Fragment>
           )}
         </section>
