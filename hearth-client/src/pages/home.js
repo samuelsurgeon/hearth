@@ -19,10 +19,6 @@ class home extends Component {
   }
 
   render() {
-    // TK
-    const errors = {}
-    const classes = {}
-
     const { posts, loading } = this.props.data;
     let recentPostsMarkup = !loading ? (
       posts.map(post => <Post key={post.postId} post={post} />)

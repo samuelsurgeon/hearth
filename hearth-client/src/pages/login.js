@@ -13,7 +13,11 @@ import { connect } from 'react-redux';
 import { loginUser } from '../redux/actions/userActions';
 
 const styles = theme => ({
-  ...theme.spreadThis
+  ...theme.spreadThis,
+  textField: {
+    width: '90%',
+    marginTop: 15
+  }
 });
 
 class login extends Component {
@@ -62,6 +66,7 @@ class login extends Component {
               name="email" 
               type="email" 
               label="E-mail" 
+              variant="outlined"
               className={classes.textField} 
               helperText={errors.email}
               error={errors.email ? true : false}
@@ -73,6 +78,7 @@ class login extends Component {
               name="password" 
               type="password" 
               label="Password" 
+              variant="outlined"
               className={classes.textField} 
               helperText={errors.password}
               error={errors.password ? true : false}

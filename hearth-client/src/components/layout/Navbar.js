@@ -29,13 +29,6 @@ class Navbar extends Component {
             </Fragment>
           ) : (
             <Fragment>
-              <SubmitPost />
-              <Link to="/">
-                <MyButton tip="Home">
-                  <HomeIcon />
-                </MyButton>
-              </Link>
-              <Notifications />
             </Fragment>
           )}
         </section>
