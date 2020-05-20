@@ -24,7 +24,7 @@ const styles = theme => ({
   },
   input: {
     backgroundColor: '#FFF',
-    borderRadius: 15,
+    borderRadius: 5,
     padding: 15
   },
   button: {
