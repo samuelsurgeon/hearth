@@ -7,16 +7,21 @@ export default {
       contrastText: '#FFF'
     },
     secondary: {
-      light: '#FF6333',
-      main: '#FF3D00',
-      dark: '#B22A00',
+      light: '#FFF',
+      main: '#FF1941',
+      dark: '#FFF',
       contrastText: '#FFF'
     }
   },
+  typography: {
+    fontFamily: `'Helvetica Neue', 'Helvetica', 'Arial', sans-serif`,
+    fontSize: 14,
+    fontWeightLight: 300,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+    useNextVariants: true
+  },
   spreadThis: {
-    typography: {
-      useNextVariants: true
-    },
     form: {
       textAlign: 'center'
     },
@@ -49,3 +54,4 @@ export default {
     }
   }
 }
+

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
 import withStyles from '@material-ui/core/styles/withStyles';
-import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -15,15 +14,23 @@ import { loginUser } from '../redux/actions/userActions';
 const styles = theme => ({
   ...theme.spreadThis,
   pageTitle: {
-    marginTop: 200
+    marginTop: 200,
+    fontSize: 30,
+    color: 'white'
   },
   textField: {
     width: '90%',
-    marginTop: 30
+    marginTop: 30,
+  },
+  input: {
+    backgroundColor: '#FFF',
+    borderRadius: 15,
+    padding: 15
   },
   button: {
     marginTop: 25,
-    marginBottom: 20
+    marginBottom: 40,
+    color: '#FFF'
   },
   hereLink: {
     color: 'grey'
@@ -69,14 +76,17 @@ class login extends Component {
       <Grid container className={classes.form}>
         <Grid item sm /> 
         <Grid item sm>
-          <Typography variant="h2" className={classes.pageTitle}>Login</Typography>
+          <h1 className={classes.pageTitle}>Login</h1>
           <form noValidate onSubmit={this.handleSubmit}>
             <TextField
               id="email" 
               name="email" 
               type="email" 
-              label="E-mail" 
-              variant="outlined"
+              placeholder="E-mail" 
+              style={{ borderRadius: 100 }}
+              InputProps={{
+                className: classes.input
+              }}
               className={classes.textField} 
               helperText={errors.email}
               error={errors.email ? true : false}
@@ -87,8 +97,10 @@ class login extends Component {
               id="password" 
               name="password" 
               type="password" 
-              label="Password" 
-              variant="outlined"
+              placeholder="Password" 
+              InputProps={{
+                className: classes.input
+              }}
               className={classes.textField} 
               helperText={errors.password}
               error={errors.password ? true : false}
@@ -96,23 +108,32 @@ class login extends Component {
               onChange={this.handleChange}
               fullWidth />
             {errors.general && (
-              <Typography variant="body2" className={classes.customError}>
+              <p className={classes.customError}>
                 {errors.general}
-              </Typography>
+              </p>
             )}
             <Button 
               type="submit" 
-              variant="outlined"
-              color="primary" 
               className={classes.button}
+              style={{ 
+                textTransform: 'none', 
+                fontSize: '16px', 
+                paddingLeft: 20,
+                paddingRight: 20,
+                marginTop: 50,
+                fontWeight: 400,
+                color: 'black',
+                backgroundColor: '#FFF',
+                borderRadius: 40
+              }}
               disabled={loading} >
-            Login
+            Continue
             {loading && (
               <CircularProgress size={30} className={classes.progress} />
             )}
             </Button>
             <br />
-            <small>Don't have an account? Sign up <Link to="/signup" className={classes.hereLink}>here</Link></small>
+            <small style={{ color: '#FFF' }}>Don't have an account? Sign up <Link to="/signup" className={classes.hereLink}>here</Link></small>
           </form>
         </Grid>
         <Grid item sm /> 
