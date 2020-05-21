@@ -23,7 +23,7 @@ class home extends Component {
     let recentPostsMarkup = !loading ? (
       posts.map(post => <Post key={post.postId} post={post} />)
     ) : (
-      <p>Loading...</p>
+      <p style={{ color: '#FFF', fontSize: 24, fontWeight: 700 }}>Loading...</p>
     );
 
     return (

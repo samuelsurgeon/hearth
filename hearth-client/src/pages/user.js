@@ -35,7 +35,7 @@ class user extends Component {
     const { postIdParam } = this.state;
     
     const postsMarkup = loading ? (
-      <p>Loading data...</p>
+      <p style={{ color: '#FFF', fontSize: 24, fontWeight: 700 }}>Loading data...</p>
     ) : posts === null || posts.length < 1 ? (
       <p>No posts from this user</p>
     ) : !postIdParam ? (
@@ -52,7 +52,7 @@ class user extends Component {
       <Grid container spacing={2}>
         <Grid item sm={4} xs={12}>
           {this.state.profile === null ? (
-            <p>Loading profile...</p>
+            <p style={{ color: '#FFF', fontSize: 24, fontWeight: 700 }}>Loading profile...</p>
           ) : (
             <StaticProfile profile={this.state.profile} />
           )}

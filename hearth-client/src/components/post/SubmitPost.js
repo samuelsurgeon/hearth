@@ -114,7 +114,21 @@ class SubmitPost extends Component {
                 className={classes.textField}
                 onChange={this.handleChange}
                 fullWidth />
-              <Button type="submit" variant="outlined" color="primary"
+              <Button 
+                type="submit" 
+                color="primary"
+                style={{
+                textTransform: 'none',
+                fontSize: '16px',
+                paddingLeft: 20,
+                paddingRight: 20,
+                marginTop: 10,
+                fontWeight: 400,
+                color: 'black',
+                backgroundColor: '#FFF',
+                boxShadow: '0 2.8px 2.2px rgba(0, 0, 0, 0.08), 0 2.8px 2.2px rgba(0, 0, 0, 0.08), 0 0 2.2px 2px rgba(0, 0, 0, 0.04)',
+                borderRadius: 40
+                }}
                 className={classes.submitButton} disabled={loading}>
                 Submit
                 {loading && (

@@ -164,7 +164,8 @@ class Profile extends Component {
           </Button>
         </div>
       </section>
-    )) : (<p>Loading...</p>);
+    )) : (<p style={{ color: '#FFF', fontSize: 24, fontWeight: 700 }}>Loading...</p>);
+
     return profileMarkup;
   }
 }
