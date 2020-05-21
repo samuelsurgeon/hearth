@@ -83,7 +83,6 @@ class login extends Component {
               name="email" 
               type="email" 
               placeholder="E-mail" 
-              style={{ borderRadius: 100 }}
               InputProps={{
                 className: classes.input
               }}

@@ -15,11 +15,19 @@ import { signupUser } from '../redux/actions/userActions';
 const styles = theme => ({
   ...theme.spreadThis,
   pageTitle: {
-    marginTop: 110
+    marginTop: 110,
+    marginBottom: 20,
+    fontSize: 30,
+    color: 'white'
+  },
+  input: {
+    backgroundColor: '#FFF',
+    borderRadius: 5,
+    padding: 15
   },
   textField: {
     width: '90%',
-    marginTop: 20
+    marginTop: 30,
   },
   button: {
     marginTop: 25,
@@ -76,14 +84,16 @@ class signup extends Component {
       <Grid container className={classes.form}>
         <Grid item sm /> 
         <Grid item sm>
-          <Typography variant="h2" className={classes.pageTitle}>Signup</Typography>
+          <h2 className={classes.pageTitle}>Signup</h2>
           <form noValidate onSubmit={this.handleSubmit}>
             <TextField
               id="email" 
               name="email" 
               type="email" 
-              label="E-mail" 
-              variant="outlined"
+              placeholder="E-mail" 
+              InputProps={{
+                className: classes.input
+              }}
               className={classes.textField} 
               helperText={errors.email}
               error={errors.email ? true : false}
@@ -94,8 +104,10 @@ class signup extends Component {
               id="password" 
               name="password" 
               type="password" 
-              label="Password" 
-              variant="outlined"
+              placeholder="Password" 
+              InputProps={{
+                className: classes.input
+              }}
               className={classes.textField} 
               helperText={errors.password}
               error={errors.password ? true : false}
@@ -106,8 +118,10 @@ class signup extends Component {
               id="confirmPassword" 
               name="confirmPassword" 
               type="password" 
-              label="Confirm Password" 
-              variant="outlined"
+              placeholder="Confirm Password" 
+              InputProps={{
+                className: classes.input
+              }}
               className={classes.textField} 
               helperText={errors.confirmPassword}
               error={errors.confirmPassword ? true : false}
@@ -118,8 +132,10 @@ class signup extends Component {
               id="handle" 
               name="handle" 
               type="text" 
-              label="Handle" 
-              variant="outlined"
+              placeholder="Name" 
+              InputProps={{
+                className: classes.input
+              }}
               className={classes.textField} 
               helperText={errors.handle}
               error={errors.handle ? true : false}
@@ -133,17 +149,28 @@ class signup extends Component {
             )}
             <Button 
               type="submit" 
-              variant="outlined" 
               color="primary" 
+              style={{
+                textTransform: 'none',
+                fontSize: '16px',
+                paddingLeft: 20,
+                paddingRight: 20,
+                marginTop: 50,
+                marginBottom: 40,
+                fontWeight: 400,
+                color: 'black',
+                backgroundColor: '#FFF',
+                borderRadius: 40
+              }}
               className={classes.button}
               disabled={loading} >
-            Signup
+            Continue
             {loading && (
               <CircularProgress size={30} className={classes.progress} />
             )}
             </Button>
             <br />
-            <small>Already have an account? Login <Link to="/login" className={classes.hereLink}>here</Link></small>
+            <small style={{ color: '#FFF' }}>Already have an account? Login <Link to="/login" className={classes.hereLink}>here</Link></small>
           </form>
         </Grid>
         <Grid item sm /> 
