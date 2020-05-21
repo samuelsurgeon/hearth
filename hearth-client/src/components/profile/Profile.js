@@ -29,7 +29,10 @@ const styles = theme => ({
     borderRadius: 15
   },
   text: {
-    marginTop: 20
+    marginTop: 25,
+    fontSize: 14,
+    fontWeight: 700,
+    color: '#474747'
   },
   profile: {
     '& .image-wrapper': {
@@ -156,10 +159,38 @@ class Profile extends Component {
           No profile found, please login again
         </Typography>
         <div className={classes.buttons}>
-          <Button variant="outlined" color="primary" component={Link} to="/login">
+          <Button 
+            color="primary" 
+            style={{
+                textTransform: 'none',
+                fontSize: '16px',
+                paddingLeft: 20,
+                paddingRight: 20,
+                marginTop: 20,
+                fontWeight: 400,
+                color: 'black',
+                backgroundColor: '#FFF',
+                boxShadow: '0 2.8px 2.2px rgba(0, 0, 0, 0.08), 0 2.8px 2.2px rgba(0, 0, 0, 0.08), 0 0 2.2px 2px rgba(0, 0, 0, 0.04)',
+                borderRadius: 40
+            }}
+            component={Link} to="/login">
             Login
           </Button>
-          <Button variant="outlined" color="secondary" component={Link} to="/signup">
+          <Button 
+            color="secondary" 
+            style={{
+                textTransform: 'none',
+                fontSize: '16px',
+                paddingLeft: 20,
+                paddingRight: 20,
+                marginTop: 20,
+                fontWeight: 400,
+                color: 'black',
+                backgroundColor: '#FFF',
+                boxShadow: '0 2.8px 2.2px rgba(0, 0, 0, 0.08), 0 2.8px 2.2px rgba(0, 0, 0, 0.08), 0 0 2.2px 2px rgba(0, 0, 0, 0.04)',
+                borderRadius: 40
+            }}
+            component={Link} to="/signup">
             Signup
           </Button>
         </div>
