@@ -15,7 +15,7 @@ import { signupUser } from '../redux/actions/userActions';
 const styles = theme => ({
   ...theme.spreadThis,
   pageTitle: {
-    marginTop: 110,
+    marginTop: 60,
     marginBottom: 20,
     fontSize: 30,
     color: 'white'

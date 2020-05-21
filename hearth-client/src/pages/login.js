@@ -14,7 +14,7 @@ import { loginUser } from '../redux/actions/userActions';
 const styles = theme => ({
   ...theme.spreadThis,
   pageTitle: {
-    marginTop: 200,
+    marginTop: 150,
     fontSize: 30,
     color: 'white'
   },

@@ -24,8 +24,8 @@ const styles = theme => ({
     borderRadius: 15,
     backgroundColor: 'white',
     overflowX: 'hidden',
-    minWidth: '88%',
-    maxWidth: '88%'
+    minWidth: '91%',
+    maxWidth: '91%'
   },
   submitButton: {
     position: 'relative',
