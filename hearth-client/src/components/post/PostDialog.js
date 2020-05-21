@@ -29,8 +29,8 @@ const styles = theme => ({
     borderRadius: 15,
     backgroundColor: 'white',
     overflowX: 'hidden',
-    minWidth: '95%',
-    maxWidth: '95%'
+    minWidth: '88%',
+    maxWidth: '88%'
   },
   card: {
     display: 'flex',

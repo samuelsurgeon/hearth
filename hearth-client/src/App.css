@@ -13,13 +13,16 @@ a:hover {
 }
 
 .container {
-  margin: 20px 0 0 0;
-  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 20px;
+  max-width: calc(100% - 28px) !important;
 }
 
 .nav-wrapper {
   display: flex;
   justify-content: flex-end;
+  margin-top: 30px;
+  width: calc(100% - 12px);
 }
 
 .nav-container {
@@ -41,9 +44,10 @@ a:hover {
 
 .MuiPopover-paper {
     position: 'absolute';
-    left: calc(100% - (100% - 8px)) !important;
-    min-width: calc(100% - 16px) !important;
-    max-width: calc(100% - 16px) !important;
+    left: calc(100% - (100% - 22px)) !important;
+    min-width: calc(100% - 44px) !important;
+    max-width: calc(100% - 44px) !important;
+    margin-top: 8px;
 }
 
 .MuiButton-root {
