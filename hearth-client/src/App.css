@@ -131,7 +131,7 @@
     margin-top: 8px;
   }
 
-  .SubmitPost-paper-10 {
+  .jss10 {
     min-width: calc(100vw - 1200px) !important;
     max-width: calc(100vw - 1200px) !important;
     overflow-x: hidden;
@@ -139,7 +139,7 @@
     background-color: white;
   }
 
-  .PostDialog-paper-363 {
+  .jss191 {
     min-width: calc(100vw - 1200px) !important;
     max-width: calc(100vw - 1200px) !important;
     overflow-x: hidden;
