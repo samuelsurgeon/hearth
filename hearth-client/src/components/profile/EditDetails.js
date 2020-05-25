@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { editUserDetails } from '../../redux/actions/userActions';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import MyButton from '../../util/MyButton';
-
-import { connect } from 'react-redux';
-import { editUserDetails } from '../../redux/actions/userActions';
 
 import Button from '@material-ui/core/Button';
 import Textfield from '@material-ui/core/Textfield';
@@ -12,6 +11,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+
 import EditIcon from '@material-ui/icons/Notes';
 
 const styles = theme => ({
@@ -76,7 +76,6 @@ class EditDetails extends Component {
 
   render() {
     const { classes } = this.props;
-    
     return (
       <Fragment>
         <MyButton tip="Edit Details" onClick={this.handleOpen} btnClassName={classes.button}>

@@ -48,8 +48,6 @@ export default function (state = initialState, action) {
         ...state
       }
     case DELETE_POST:
-      // index = state.posts.findIndex(post => post.postId === action.payload);
-      // state.posts.splice(index, 1);
       return {
         ...state,
         posts: state.posts.filter(post => post.postId !== action.payload)
@@ -71,23 +69,8 @@ export default function (state = initialState, action) {
           commentCount: state.post.commentCount + 1
         }
       };
-      /*
-      index = state.posts.findIndex(
-        post => post.postId === action.payload.postId
-      );
-      let updatedPosts = JSON.parse(JSON.stringify(state.posts));
-      updatedPosts[index].commentCount += 1;
-      return {
-        ...state,
-        posts: updatedPosts,
-        post: {
-          ...state.post,
-          comments: [action.payload.comment, ...state.post.comments],
-          commentCount: state.post.commentCount + 1
-        }
-      };
-      */
     default:
       return state;
   }
 }
+

@@ -6,7 +6,6 @@ import MyButton from '../../util/MyButton';
 import SubmitPost from '../post/SubmitPost';
 import Notifications from './Notifications';
 
-//import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import HomeIcon from '@material-ui/icons/Refresh';
 

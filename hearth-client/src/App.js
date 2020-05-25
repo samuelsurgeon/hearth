@@ -1,4 +1,8 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import { SET_AUTHENTICATED } from './redux/types';
+import { logoutUser, getUserData } from './redux/actions/userActions';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import axios from 'axios';
@@ -6,11 +10,6 @@ import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import themeFile from './util/theme';
 import jwtDecode from 'jwt-decode';
 import './App.css';
-
-import { Provider } from 'react-redux';
-import store from './redux/store';
-import { SET_AUTHENTICATED } from './redux/types';
-import { logoutUser, getUserData } from './redux/actions/userActions';
 
 import NavBar from './components/layout/Navbar';
 import AuthRoute from './util/AuthRoute';
@@ -57,3 +56,4 @@ function App() {
 }
 
 export default App;
+

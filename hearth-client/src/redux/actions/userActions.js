@@ -45,7 +45,6 @@ export const signupUser = (newUserData, history) => (dispatch) => {
 
 export const logoutUser = () => (dispatch) => {
   localStorage.removeItem('FBIdToken');
-  // This might fail because I may have spelled Authorisation with a 'z' elsewhere
   delete axios.defaults.headers.common['Authorisation'];
   dispatch({ type: SET_UNAUTHENTICATED });
 }
@@ -95,3 +94,4 @@ const setAuthorisationHeader = token => {
   localStorage.setItem('FBIdToken', FBIdToken);
   axios.defaults.headers.common['Authorization'] = FBIdToken;
 }
+

@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { markNotificationsRead } from '../../redux/actions/userActions';
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -14,9 +16,6 @@ import Badge from '@material-ui/core/Badge';
 import NotificationsIcon from '@material-ui/icons/Menu';
 import FavouriteIcon from '@material-ui/icons/Favorite';
 import ChatIcon from '@material-ui/icons/ChatBubble';
-
-import { connect } from 'react-redux';
-import { markNotificationsRead } from '../../redux/actions/userActions';
 
 class Notifications extends Component {
   state = {

@@ -8,7 +8,7 @@ let db = {
       imageUrl: 'image/dsfsdkfghskdfgs/dgfdhfgdh',
       bio: 'Hello, my name is user, nice to meet you',
       website: 'https://user.com',
-      location: 'Lonodn, UK',
+      location: 'Sydney, Australia',
     },
   ],
   posts: [
@@ -41,7 +41,6 @@ let db = {
 };
 
 const userDetails = {
-  // Redux data
   credentials: {
     userId: 'N43KJ5H43KJHREW4J5H3JWMERHB',
     email: 'user@email.com',
@@ -50,7 +49,7 @@ const userDetails = {
     imageUrl: 'image/dsfsdkfghskdfgs/dgfdhfgdh',
     bio: 'Hello, my name is user, nice to meet you',
     website: 'https://user.com',
-    location: 'Lonodn, UK',
+    location: 'Sydney, Australia',
   },
   likes: [
     {
@@ -63,3 +62,4 @@ const userDetails = {
     },
   ],
 };
+

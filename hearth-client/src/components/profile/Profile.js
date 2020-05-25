@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { logoutUser, uploadImage } from '../../redux/actions/userActions';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 import EditDetails from './EditDetails';
 import MyButton from '../../util/MyButton';
@@ -16,9 +18,6 @@ import LinkIcon from '@material-ui/icons/Language';
 import CalendarToday from '@material-ui/icons/CalendarToday';
 import EditIcon from '@material-ui/icons/AddPhotoAlternate';
 import KeyboardReturn from '@material-ui/icons/ChevronLeft';
-
-import { connect } from 'react-redux';
-import { logoutUser, uploadImage } from '../../redux/actions/userActions';
 
 const styles = theme => ({
   ...theme.spreadThis,
@@ -215,3 +214,4 @@ Profile.propTypes = {
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(Profile));
+

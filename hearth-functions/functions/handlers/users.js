@@ -227,13 +227,10 @@ exports.uploadImage = (req, res) => {
         metadata: {
           metadata: {
             contentType: imageToBeUploaded.mimetype,
-            //Generate token to be appended to imageUrl
-            //firebaseStorageDownloadTokens: generatedToken,
           },
         },
       })
       .then(() => {
-        // Append token to url
         const imageUrl = `https://firebasestorage.googleapis.com/v0/b/${config.storageBucket}/o/${imageFileName}?alt=media&token=${generatedToken}`;
         return db.doc(`/users/${req.user.handle}`).update({ imageUrl });
       })
@@ -264,3 +261,4 @@ exports.markNotificationsRead = (req, res) => {
       return res.status(500).json({ error: err.code });
     });
 };
+

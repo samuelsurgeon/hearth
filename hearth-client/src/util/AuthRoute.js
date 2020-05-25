@@ -21,3 +21,4 @@ AuthRoute.propTypes = {
 }
 
 export default connect(mapStateToProps)(AuthRoute);
+

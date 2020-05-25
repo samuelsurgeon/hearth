@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import MyButton from '../../util/MyButton';
+import { connect } from 'react-redux';
+import { likePost, unlikePost } from '../../redux/actions/dataActions';
 import { Link } from 'react-router-dom';
+import MyButton from '../../util/MyButton';
 import PropTypes from 'prop-types';
 
 import FavouriteIcon from '@material-ui/icons/Favorite';
 import FavouriteBorder from '@material-ui/icons/FavoriteBorder';
-
-import { connect } from 'react-redux';
-import { likePost, unlikePost } from '../../redux/actions/dataActions';
 
 class LikeButton extends Component {
   likedPost = () => {

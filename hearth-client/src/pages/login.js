@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { loginUser } from '../redux/actions/userActions';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -7,9 +9,6 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
-
-import { connect } from 'react-redux';
-import { loginUser } from '../redux/actions/userActions';
 
 const styles = theme => ({
   ...theme.spreadThis,
@@ -71,7 +70,6 @@ class login extends Component {
   render() {
     const { classes, UI: { loading } } = this.props;
     const { errors } = this.state;
-
     return (
       <Grid container className={classes.form}>
         <Grid item sm /> 

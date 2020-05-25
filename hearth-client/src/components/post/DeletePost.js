@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { deletePost } from '../../redux/actions/dataActions';
 import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
 import MyButton from '../../util/MyButton';
@@ -8,9 +10,6 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
 import DeleteOutline from '@material-ui/icons/DeleteOutline';
-
-import { connect } from 'react-redux';
-import { deletePost } from '../../redux/actions/dataActions';
 
 const styles = {
   deleteButton: {
@@ -40,7 +39,6 @@ class DeletePost extends Component {
 
   render() {
     const { classes } = this.props;
-
     return (
       <Fragment>
         <MyButton

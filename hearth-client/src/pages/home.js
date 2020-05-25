@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { getPosts } from '../redux/actions/dataActions';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -7,11 +9,8 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import PropTypes from 'prop-types';
 
 import Post from '../components/post/Post';
-import Profile from '../components/profile/Profile';
 import SubmitPost from '../components/post/SubmitPost';
-
-import { connect } from 'react-redux';
-import { getPosts } from '../redux/actions/dataActions';
+import Profile from '../components/profile/Profile';
 
 class home extends Component {
   componentDidMount() {
@@ -49,3 +48,4 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { getPosts })(home);
+

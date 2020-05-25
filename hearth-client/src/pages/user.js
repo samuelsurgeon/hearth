@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getUserData } from '../redux/actions/dataActions';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Post from '../components/post/Post';
 import StaticProfile from '../components/profile/StaticProfile';
 import Grid from '@material-ui/core/Grid';
-
-import { connect } from 'react-redux';
-import { getUserData } from '../redux/actions/dataActions';
 
 class user extends Component {
   state = {
@@ -75,3 +74,4 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { getUserData })(user);
+
