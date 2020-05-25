@@ -34,6 +34,22 @@
     padding: 8px;
     margin: 0 auto;
   }
+
+  .SubmitPost-paper-10 {
+    min-width: calc(100vw - 200px) !important;
+    max-width: calc(100vw - 200px) !important;
+    overflow-x: hidden;
+    border-radius: 15px;
+    background-color: white;
+  }
+
+  .PostDialog-paper-363 {
+    min-width: calc(100vw - 200px) !important;
+    max-width: calc(100vw - 200px) !important;
+    overflow-x: hidden;
+    border-radius: 15px;
+    background-color: white;
+  }
 }
 
 @media only screen and (min-width: 1000px) {
@@ -61,6 +77,22 @@
   .MuiGrid-spacing-xs-2 > .MuiGrid-item {
     padding: 8px;
     margin: 0 auto;
+  }
+  
+  .SubmitPost-paper-10 {
+    min-width: calc(100vw - 600px) !important;
+    max-width: calc(100vw - 600px) !important;
+    overflow-x: hidden;
+    border-radius: 15px;
+    background-color: white;
+  }
+
+  .PostDialog-paper-363 {
+    min-width: calc(100vw - 600px) !important;
+    max-width: calc(100vw - 600px) !important;
+    overflow-x: hidden;
+    border-radius: 15px;
+    background-color: white;
   }
 }
 
@@ -100,8 +132,16 @@
   }
 
   .SubmitPost-paper-10 {
-    min-width: calc(100vw - 1200px);
-    max-width: calc(100vw - 1200px);
+    min-width: calc(100vw - 1200px) !important;
+    max-width: calc(100vw - 1200px) !important;
+    overflow-x: hidden;
+    border-radius: 15px;
+    background-color: white;
+  }
+
+  .PostDialog-paper-363 {
+    min-width: calc(100vw - 1200px) !important;
+    max-width: calc(100vw - 1200px) !important;
     overflow-x: hidden;
     border-radius: 15px;
     background-color: white;
@@ -133,6 +173,22 @@
   .MuiGrid-spacing-xs-2 > .MuiGrid-item {
     padding: 8px;
     margin: 0 auto;
+  }
+
+  .SubmitPost-paper-10 {
+    min-width: calc(100vw - 80vw) !important;
+    max-width: calc(100vw - 80vw) !important;
+    overflow-x: hidden;
+    border-radius: 15px;
+    background-color: white;
+  }
+
+  .PostDialog-paper-363 {
+    min-width: calc(100vw - 80vw) !important;
+    max-width: calc(100vw - 80vw) !important;
+    overflow-x: hidden;
+    border-radius: 15px;
+    background-color: white;
   }
 }
 
