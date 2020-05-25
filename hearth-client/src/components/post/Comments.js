@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-const styles = theme => ({
+const styles = (theme) => ({
   ...theme.spreadThis,
   container: {
     marginTop: 15,
@@ -15,11 +15,12 @@ const styles = theme => ({
     width: '100%',
     backgroundColor: '#FFF',
     borderRadius: 15,
-    boxShadow:'0 2.8px 2.2px rgba(0, 0, 0, 0.05), 0 6.7px 5.3px rgba(0, 0, 0, 0.04), 0 12.5px 10px rgba(0, 0, 0, 0.005), 0 -10px 10px rgba(0, 0, 0, 0.03)'
+    boxShadow:
+      '0 2.8px 2.2px rgba(0, 0, 0, 0.05), 0 6.7px 5.3px rgba(0, 0, 0, 0.04), 0 12.5px 10px rgba(0, 0, 0, 0.005), 0 -10px 10px rgba(0, 0, 0, 0.03)',
   },
   flex: {
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   commentImage: {
     minWidth: '100%',
@@ -27,11 +28,11 @@ const styles = theme => ({
     width: 50,
     height: 50,
     objectFit: 'cover',
-    borderRadius: '50%'
+    borderRadius: '50%',
   },
   commentData: {
-    marginLeft: 20
-  }
+    marginLeft: 20,
+  },
 });
 
 class Comments extends Component {
@@ -46,7 +47,11 @@ class Comments extends Component {
               <Grid item sm={12} className={classes.container}>
                 <section className={classes.flex}>
                   <section style={{ minWidth: 50 }}>
-                    <img src={userImage} alt="comment" className={classes.commentImage} />
+                    <img
+                      src={userImage}
+                      alt="comment"
+                      className={classes.commentImage}
+                    />
                   </section>
                   <section>
                     <div className={classes.commentData}>
@@ -54,16 +59,15 @@ class Comments extends Component {
                         variant="h5"
                         component={Link}
                         to={`/users/${userHandle}`}
-                        color="primary">
+                        color="primary"
+                      >
                         {userHandle}
-                      </Typography> 
+                      </Typography>
                       <Typography variant="body2" color="textSecondary">
                         {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
                       </Typography>
                       <hr className={classes.invisibleSeparator} />
-                      <Typography variant="body1">
-                        {body}
-                      </Typography>
+                      <Typography variant="body1">{body}</Typography>
                     </div>
                   </section>
                 </section>
@@ -77,7 +81,7 @@ class Comments extends Component {
 }
 
 Comments.propTypes = {
-  comments: PropTypes.array.isRequired
-}
+  comments: PropTypes.array.isRequired,
+};
 
 export default withStyles(styles)(Comments);

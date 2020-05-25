@@ -20,7 +20,7 @@ class home extends Component {
   render() {
     const { posts, loading } = this.props.data;
     let recentPostsMarkup = !loading ? (
-      posts.map(post => <Post key={post.postId} post={post} />)
+      posts.map((post) => <Post key={post.postId} post={post} />)
     ) : (
       <p style={{ color: '#FFF', fontSize: 24, fontWeight: 700 }}>Loading...</p>
     );
@@ -40,12 +40,11 @@ class home extends Component {
 
 home.propTypes = {
   getPosts: PropTypes.func.isRequired,
-  data: PropTypes.object.isRequired
-}
+  data: PropTypes.object.isRequired,
+};
 
-const mapStateToProps = state => ({
-  data: state.data
+const mapStateToProps = (state) => ({
+  data: state.data,
 });
 
 export default connect(mapStateToProps, { getPosts })(home);
-

@@ -14,18 +14,18 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 import EditIcon from '@material-ui/icons/Notes';
 
-const styles = theme => ({
+const styles = (theme) => ({
   ...theme.spreadThis,
   button: {
     float: 'right',
   },
   closeButton: {
-    marginBottom: 20
+    marginBottom: 20,
   },
   submitButton: {
     marginRight: 15,
-    marginBottom: 20
-  }
+    marginBottom: 20,
+  },
 });
 
 class EditDetails extends Component {
@@ -33,21 +33,21 @@ class EditDetails extends Component {
     bio: '',
     website: '',
     location: '',
-    open: false
+    open: false,
   };
 
-  mapUserDetailsToState = credentials => {
+  mapUserDetailsToState = (credentials) => {
     this.setState({
       bio: credentials.bio ? credentials.bio : '',
       website: credentials.website ? credentials.website : '',
-      location: credentials.location ? credentials.location : ''
+      location: credentials.location ? credentials.location : '',
     });
   };
 
   componentDidMount() {
     const { credentials } = this.props;
     this.mapUserDetailsToState(credentials);
-  };
+  }
 
   handleOpen = () => {
     this.setState({ open: true });
@@ -58,9 +58,9 @@ class EditDetails extends Component {
     this.setState({ open: false });
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
@@ -68,7 +68,7 @@ class EditDetails extends Component {
     const userDetails = {
       bio: this.state.bio,
       website: this.state.website,
-      location: this.state.location
+      location: this.state.location,
     };
     this.props.editUserDetails(userDetails);
     this.handleClose();
@@ -78,15 +78,20 @@ class EditDetails extends Component {
     const { classes } = this.props;
     return (
       <Fragment>
-        <MyButton tip="Edit Details" onClick={this.handleOpen} btnClassName={classes.button}>
+        <MyButton
+          tip="Edit Details"
+          onClick={this.handleOpen}
+          btnClassName={classes.button}
+        >
           <EditIcon color="primary" />
         </MyButton>
         <Dialog
-        open={this.state.open}
-        onClose={this.handleClose}
-        fullWidth
-        maxWidth="sm">
-          <DialogTitle>Edit your details</DialogTitle> 
+          open={this.state.open}
+          onClose={this.handleClose}
+          fullWidth
+          maxWidth="sm"
+        >
+          <DialogTitle>Edit your details</DialogTitle>
           <DialogContent>
             <form>
               <Textfield
@@ -100,7 +105,8 @@ class EditDetails extends Component {
                 className={classes.textField}
                 value={this.state.bio}
                 onChange={this.handleChange}
-                fullWidth />
+                fullWidth
+              />
               <Textfield
                 name="website"
                 type="text"
@@ -110,7 +116,8 @@ class EditDetails extends Component {
                 className={classes.textField}
                 value={this.state.website}
                 onChange={this.handleChange}
-                fullWidth />
+                fullWidth
+              />
               <Textfield
                 name="location"
                 type="text"
@@ -120,30 +127,43 @@ class EditDetails extends Component {
                 className={classes.textField}
                 value={this.state.location}
                 onChange={this.handleChange}
-                fullWidth />
+                fullWidth
+              />
             </form>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} variant="outlined" color="primary" className={classes.closeButton}>
+            <Button
+              onClick={this.handleClose}
+              variant="outlined"
+              color="primary"
+              className={classes.closeButton}
+            >
               Cancel
             </Button>
-            <Button onClick={this.handleSubmit} variant="outlined" color="primary" className={classes.submitButton}>
+            <Button
+              onClick={this.handleSubmit}
+              variant="outlined"
+              color="primary"
+              className={classes.submitButton}
+            >
               Save
             </Button>
           </DialogActions>
         </Dialog>
       </Fragment>
-    )
+    );
   }
 }
 
 EditDetails.propTypes = {
   editUserDetails: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired
-}
+  classes: PropTypes.object.isRequired,
+};
 
-const mapStateToProps = state => ({
-  credentials: state.user.credentials
+const mapStateToProps = (state) => ({
+  credentials: state.user.credentials,
 });
 
-export default connect(mapStateToProps, { editUserDetails })(withStyles(styles)(EditDetails));
+export default connect(mapStateToProps, { editUserDetails })(
+  withStyles(styles)(EditDetails)
+);

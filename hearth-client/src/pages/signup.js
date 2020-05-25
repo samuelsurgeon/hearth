@@ -11,18 +11,18 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-const styles = theme => ({
+const styles = (theme) => ({
   ...theme.spreadThis,
   pageTitle: {
     marginTop: 60,
     marginBottom: 20,
     fontSize: 30,
-    color: 'white'
+    color: 'white',
   },
   input: {
     backgroundColor: '#FFF',
     borderRadius: 5,
-    padding: 15
+    padding: 15,
   },
   textField: {
     width: '90%',
@@ -30,11 +30,11 @@ const styles = theme => ({
   },
   button: {
     marginTop: 25,
-    marginBottom: 25
+    marginBottom: 25,
   },
   hereLink: {
-    color: 'grey'
-  }
+    color: 'grey',
+  },
 });
 
 class signup extends Component {
@@ -45,8 +45,8 @@ class signup extends Component {
       password: '',
       confirmPassword: '',
       handle: '',
-      errors: {}
-    }
+      errors: {},
+    };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -55,99 +55,106 @@ class signup extends Component {
     }
   }
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     this.setState({
-      loading: true
+      loading: true,
     });
     const newUserData = {
       email: this.state.email,
       password: this.state.password,
       confirmPassword: this.state.confirmPassword,
-      handle: this.state.handle
-    }
+      handle: this.state.handle,
+    };
     this.props.signupUser(newUserData, this.props.history);
-  }
+  };
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
-  }
+  };
 
   render() {
-    const { classes, UI: { loading } } = this.props;
+    const {
+      classes,
+      UI: { loading },
+    } = this.props;
     const { errors } = this.state;
     return (
       <Grid container className={classes.form}>
-        <Grid item sm /> 
+        <Grid item sm />
         <Grid item sm>
           <h2 className={classes.pageTitle}>Signup</h2>
           <form noValidate onSubmit={this.handleSubmit}>
             <TextField
-              id="email" 
-              name="email" 
-              type="email" 
-              placeholder="E-mail" 
+              id="email"
+              name="email"
+              type="email"
+              placeholder="E-mail"
               InputProps={{
-                className: classes.input
+                className: classes.input,
               }}
-              className={classes.textField} 
+              className={classes.textField}
               helperText={errors.email}
               error={errors.email ? true : false}
-              value={this.state.email} 
+              value={this.state.email}
               onChange={this.handleChange}
-              fullWidth />
+              fullWidth
+            />
             <TextField
-              id="password" 
-              name="password" 
-              type="password" 
-              placeholder="Password" 
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Password"
               InputProps={{
-                className: classes.input
+                className: classes.input,
               }}
-              className={classes.textField} 
+              className={classes.textField}
               helperText={errors.password}
               error={errors.password ? true : false}
-              value={this.state.password} 
+              value={this.state.password}
               onChange={this.handleChange}
-              fullWidth />
+              fullWidth
+            />
             <TextField
-              id="confirmPassword" 
-              name="confirmPassword" 
-              type="password" 
-              placeholder="Confirm Password" 
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              placeholder="Confirm Password"
               InputProps={{
-                className: classes.input
+                className: classes.input,
               }}
-              className={classes.textField} 
+              className={classes.textField}
               helperText={errors.confirmPassword}
               error={errors.confirmPassword ? true : false}
-              value={this.state.confirmPassword} 
+              value={this.state.confirmPassword}
               onChange={this.handleChange}
-              fullWidth />
+              fullWidth
+            />
             <TextField
-              id="handle" 
-              name="handle" 
-              type="text" 
-              placeholder="Name" 
+              id="handle"
+              name="handle"
+              type="text"
+              placeholder="Name"
               InputProps={{
-                className: classes.input
+                className: classes.input,
               }}
-              className={classes.textField} 
+              className={classes.textField}
               helperText={errors.handle}
               error={errors.handle ? true : false}
-              value={this.state.handle} 
+              value={this.state.handle}
               onChange={this.handleChange}
-              fullWidth />
+              fullWidth
+            />
             {errors.general && (
               <Typography variant="body2" className={classes.customError}>
                 {errors.general}
               </Typography>
             )}
-            <Button 
-              type="submit" 
-              color="primary" 
+            <Button
+              type="submit"
+              color="primary"
               style={{
                 textTransform: 'none',
                 fontSize: '16px',
@@ -158,20 +165,26 @@ class signup extends Component {
                 fontWeight: 400,
                 color: 'black',
                 backgroundColor: '#FFF',
-                borderRadius: 40
+                borderRadius: 40,
               }}
               className={classes.button}
-              disabled={loading} >
-            Continue
-            {loading && (
-              <CircularProgress size={30} className={classes.progress} />
-            )}
+              disabled={loading}
+            >
+              Continue
+              {loading && (
+                <CircularProgress size={30} className={classes.progress} />
+              )}
             </Button>
             <br />
-            <small style={{ color: '#FFF' }}>Already have an account? Login <Link to="/login" className={classes.hereLink}>here</Link></small>
+            <small style={{ color: '#FFF' }}>
+              Already have an account? Login{' '}
+              <Link to="/login" className={classes.hereLink}>
+                here
+              </Link>
+            </small>
           </form>
         </Grid>
-        <Grid item sm /> 
+        <Grid item sm />
       </Grid>
     );
   }
@@ -181,13 +194,14 @@ signup.propTypes = {
   classes: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired,
-  signupUser: PropTypes.func.isRequired
-}
+  signupUser: PropTypes.func.isRequired,
+};
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   user: state.user,
-  UI: state.UI
+  UI: state.UI,
 });
 
-export default connect(mapStateToProps, { signupUser })(withStyles(styles)(signup));
-
+export default connect(mapStateToProps, { signupUser })(
+  withStyles(styles)(signup)
+);

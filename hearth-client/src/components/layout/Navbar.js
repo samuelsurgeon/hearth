@@ -27,8 +27,7 @@ class Navbar extends Component {
               <Notifications />
             </Fragment>
           ) : (
-            <Fragment>
-            </Fragment>
+            <Fragment></Fragment>
           )}
         </section>
       </section>
@@ -37,11 +36,11 @@ class Navbar extends Component {
 }
 
 Navbar.propTypes = {
-  authenticated: PropTypes.bool.isRequired
+  authenticated: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = state => ({
-  authenticated: state.user.authenticated
+const mapStateToProps = (state) => ({
+  authenticated: state.user.authenticated,
 });
 
 export default connect(mapStateToProps)(Navbar);

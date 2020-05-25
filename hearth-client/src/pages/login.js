@@ -10,12 +10,12 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-const styles = theme => ({
+const styles = (theme) => ({
   ...theme.spreadThis,
   pageTitle: {
     marginTop: 150,
     fontSize: 30,
-    color: 'white'
+    color: 'white',
   },
   textField: {
     width: '90%',
@@ -24,16 +24,16 @@ const styles = theme => ({
   input: {
     backgroundColor: '#FFF',
     borderRadius: 5,
-    padding: 15
+    padding: 15,
   },
   button: {
     marginTop: 25,
     marginBottom: 40,
-    color: '#FFF'
+    color: '#FFF',
   },
   hereLink: {
-    color: 'grey'
-  }
+    color: 'grey',
+  },
 });
 
 class login extends Component {
@@ -42,8 +42,8 @@ class login extends Component {
     this.state = {
       email: '',
       password: '',
-      errors: {}
-    }
+      errors: {},
+    };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -52,88 +52,97 @@ class login extends Component {
     }
   }
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     const userData = {
       email: this.state.email,
       password: this.state.password,
-    }
+    };
     this.props.loginUser(userData, this.props.history);
-  }
+  };
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
-  }
+  };
 
   render() {
-    const { classes, UI: { loading } } = this.props;
+    const {
+      classes,
+      UI: { loading },
+    } = this.props;
     const { errors } = this.state;
     return (
       <Grid container className={classes.form}>
-        <Grid item sm /> 
+        <Grid item sm />
         <Grid item sm>
           <h1 className={classes.pageTitle}>Login</h1>
           <form noValidate onSubmit={this.handleSubmit}>
             <TextField
-              id="email" 
-              name="email" 
-              type="email" 
-              placeholder="E-mail" 
+              id="email"
+              name="email"
+              type="email"
+              placeholder="E-mail"
               InputProps={{
-                className: classes.input
+                className: classes.input,
               }}
-              className={classes.textField} 
+              className={classes.textField}
               helperText={errors.email}
               error={errors.email ? true : false}
-              value={this.state.email} 
+              value={this.state.email}
               onChange={this.handleChange}
-              fullWidth />
+              fullWidth
+            />
             <TextField
-              id="password" 
-              name="password" 
-              type="password" 
-              placeholder="Password" 
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Password"
               InputProps={{
-                className: classes.input
+                className: classes.input,
               }}
-              className={classes.textField} 
+              className={classes.textField}
               helperText={errors.password}
               error={errors.password ? true : false}
-              value={this.state.password} 
+              value={this.state.password}
               onChange={this.handleChange}
-              fullWidth />
+              fullWidth
+            />
             {errors.general && (
-              <p className={classes.customError}>
-                {errors.general}
-              </p>
+              <p className={classes.customError}>{errors.general}</p>
             )}
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               className={classes.button}
-              style={{ 
-                textTransform: 'none', 
-                fontSize: '16px', 
+              style={{
+                textTransform: 'none',
+                fontSize: '16px',
                 paddingLeft: 20,
                 paddingRight: 20,
                 marginTop: 50,
                 fontWeight: 400,
                 color: 'black',
                 backgroundColor: '#FFF',
-                borderRadius: 40
+                borderRadius: 40,
               }}
-              disabled={loading} >
-            Continue
-            {loading && (
-              <CircularProgress size={30} className={classes.progress} />
-            )}
+              disabled={loading}
+            >
+              Continue
+              {loading && (
+                <CircularProgress size={30} className={classes.progress} />
+              )}
             </Button>
             <br />
-            <small style={{ color: '#FFF' }}>Don't have an account? Sign up <Link to="/signup" className={classes.hereLink}>here</Link></small>
+            <small style={{ color: '#FFF' }}>
+              Don't have an account? Sign up{' '}
+              <Link to="/signup" className={classes.hereLink}>
+                here
+              </Link>
+            </small>
           </form>
         </Grid>
-        <Grid item sm /> 
+        <Grid item sm />
       </Grid>
     );
   }
@@ -143,17 +152,19 @@ login.propTypes = {
   classes: PropTypes.object.isRequired,
   loginUser: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
-  UI: PropTypes.object.isRequired
+  UI: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   user: state.user,
-  UI: state.UI
+  UI: state.UI,
 });
 
 const mapActionsToProps = {
-  loginUser
-}
+  loginUser,
+};
 
-export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(login));
-
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withStyles(styles)(login));

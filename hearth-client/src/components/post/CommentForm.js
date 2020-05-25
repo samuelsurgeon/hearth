@@ -8,15 +8,15 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 
-const styles = theme => ({
+const styles = (theme) => ({
   ...theme.spreadThis,
 });
 
 class CommentForm extends Component {
   state = {
     body: '',
-    errors: {}
-  }
+    errors: {},
+  };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
@@ -27,21 +27,25 @@ class CommentForm extends Component {
     }
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
-  }
+  };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     this.props.submitComment(this.props.postId, { body: this.state.body });
-  }
+  };
 
   render() {
     const { classes, authenticated } = this.props;
     const errors = this.state.errors;
 
     const CommentFormMarkup = authenticated ? (
-      <Grid item sm={12} style={{ textAlign: 'center', marginTop: 15, marginBottom: 10 }}>
+      <Grid
+        item
+        sm={12}
+        style={{ textAlign: 'center', marginTop: 15, marginBottom: 10 }}
+      >
         <form onSubmit={this.handleSubmit}>
           <TextField
             name="body"
@@ -53,7 +57,8 @@ class CommentForm extends Component {
             value={this.state.body}
             onChange={this.handleChange}
             fullWidth
-            className={classes.textField} />
+            className={classes.textField}
+          />
         </form>
       </Grid>
     ) : null;
@@ -66,12 +71,14 @@ CommentForm.propTypes = {
   UI: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   postId: PropTypes.string.isRequired,
-  authenticated: PropTypes.bool.isRequired
-}
+  authenticated: PropTypes.bool.isRequired,
+};
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   UI: state.UI,
-  authenticated: state.user.authenticated
+  authenticated: state.user.authenticated,
 });
 
-export default connect(mapStateToProps, { submitComment })(withStyles(styles)(CommentForm));
+export default connect(mapStateToProps, { submitComment })(
+  withStyles(styles)(CommentForm)
+);

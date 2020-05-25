@@ -20,17 +20,17 @@ import CloseIcon from '@material-ui/icons/Close';
 import UnfoldMore from '@material-ui/icons/UnfoldMore';
 import ChatIcon from '@material-ui/icons/ChatBubbleOutline';
 
-const styles = theme => ({
+const styles = (theme) => ({
   ...theme.spreadThis,
   root: {
-    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   paper: {
     borderRadius: 15,
     backgroundColor: 'white',
     overflowX: 'hidden',
     minWidth: '91%',
-    maxWidth: '91%'
+    maxWidth: '91%',
   },
   card: {
     display: 'flex',
@@ -41,68 +41,68 @@ const styles = theme => ({
   },
   heading: {
     display: 'flex',
-    paddingBottom: 10
+    paddingBottom: 10,
   },
   nameDate: {
     display: 'flex',
     flexDirection: 'column',
-    marginLeft: 15
+    marginLeft: 15,
   },
   profileImage: {
     minWidth: 50,
     minHeight: 50,
     maxHeight: 50,
     maxWidth: 50,
-    borderRadius: '50%'
+    borderRadius: '50%',
   },
   content: {
     padding: 0,
-    margin: 0
+    margin: 0,
   },
   body: {
     padding: '0px 2px 20px 2px',
   },
   createdAt: {
     position: 'relative',
-    bottom: 3
+    bottom: 3,
   },
   likeCount: {
     position: 'relative',
     left: 8,
     marginRight: 35,
-    fontSize: '0.9rem'
+    fontSize: '0.9rem',
   },
   commentCount: {
     position: 'relative',
     left: 8,
-    fontSize: '0.9rem'
+    fontSize: '0.9rem',
   },
   dialogContent: {
     padding: 20,
     borderRadius: 100,
-    width: '100%'
+    width: '100%',
   },
   closeButton: {
     position: 'absolute',
     top: '2.7%',
-    left: '82%'
+    left: '82%',
   },
   spinnerDiv: {
     textAlign: 'center',
     marginTop: 50,
-    marginBottom: 50
+    marginBottom: 50,
   },
   visibleSeparator: {
-    marginTop: 30
-  }
+    marginTop: 30,
+  },
 });
 
 class PostDialog extends Component {
   state = {
     open: false,
     oldPath: '',
-    newPath: ''
-  }
+    newPath: '',
+  };
 
   componentDidMount() {
     if (this.props.openDialog) {
@@ -122,13 +122,13 @@ class PostDialog extends Component {
 
     this.setState({ open: true, oldPath, newPath });
     this.props.getPost(this.props.postId);
-  }
+  };
 
   handleClose = () => {
     window.history.pushState(null, null, this.state.oldPath);
     this.setState({ open: false });
     this.props.clearErrors();
-  }
+  };
 
   render() {
     const {
@@ -141,9 +141,9 @@ class PostDialog extends Component {
         commentCount,
         userImage,
         userHandle,
-        comments
+        comments,
       },
-      UI: { loading }
+      UI: { loading },
     } = this.props;
 
     const dialogMarkup = loading ? (
@@ -159,12 +159,17 @@ class PostDialog extends Component {
               component={Link}
               color="primary"
               variant="h5"
-              to={`/users/${userHandle}`}>
+              to={`/users/${userHandle}`}
+            >
               {userHandle}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" className={classes.createdAt}>
-                {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
-              </Typography>
+            </Typography>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              className={classes.createdAt}
+            >
+              {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
+            </Typography>
           </section>
         </section>
         <section className={classes.content}>
@@ -181,11 +186,15 @@ class PostDialog extends Component {
         <CommentForm postId={postId} />
         <Comments comments={comments} />
       </section>
-    )
+    );
 
     return (
       <Fragment>
-        <MyButton onClick={this.handleOpen} tip="Expand post" tipClassName={classes.expandButton}>
+        <MyButton
+          onClick={this.handleOpen}
+          tip="Expand post"
+          tipClassName={classes.expandButton}
+        >
           <ChatIcon color="primary" />
         </MyButton>
         <Dialog
@@ -193,19 +202,19 @@ class PostDialog extends Component {
           onClose={this.handleClose}
           classes={{
             root: classes.root,
-            paper: classes.paper
+            paper: classes.paper,
           }}
           fullWidth
-          maxWidth="xs">
+          maxWidth="xs"
+        >
           <MyButton
             tip="Close"
             onClick={this.handleClose}
-            tipClassName={classes.closeButton}>
+            tipClassName={classes.closeButton}
+          >
             <CloseIcon />
           </MyButton>
-          <section className={classes.dialogContent}>
-            {dialogMarkup}
-          </section>
+          <section className={classes.dialogContent}>{dialogMarkup}</section>
         </Dialog>
       </Fragment>
     );
@@ -218,17 +227,20 @@ PostDialog.propTypes = {
   postId: PropTypes.string.isRequired,
   userHandle: PropTypes.string.isRequired,
   post: PropTypes.object.isRequired,
-  UI: PropTypes.object.isRequired
-}
+  UI: PropTypes.object.isRequired,
+};
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   post: state.data.post,
-  UI: state.UI
+  UI: state.UI,
 });
 
 const mapActionsToProps = {
   getPost,
-  clearErrors
+  clearErrors,
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(PostDialog));
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withStyles(styles)(PostDialog));

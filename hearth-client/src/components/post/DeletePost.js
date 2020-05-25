@@ -15,27 +15,27 @@ const styles = {
   deleteButton: {
     position: 'absolute',
     left: '82%',
-    top: '7%'
-  }
-}
+    top: '7%',
+  },
+};
 
 class DeletePost extends Component {
   state = {
-    open: false
-  }
+    open: false,
+  };
 
   handleOpen = () => {
     this.setState({ open: true });
-  }
-  
+  };
+
   handleClose = () => {
     this.setState({ open: false });
-  }
-  
+  };
+
   deletePost = () => {
     this.props.deletePost(this.props.postId);
     this.setState({ open: false });
-  }
+  };
 
   render() {
     const { classes } = this.props;
@@ -54,9 +54,7 @@ class DeletePost extends Component {
           fullWidth
           maxWidth="sm"
         >
-          <DialogTitle>
-            Are you sure you want to delete this post?
-          </DialogTitle>
+          <DialogTitle>Are you sure you want to delete this post?</DialogTitle>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
               Cancel
@@ -74,7 +72,7 @@ class DeletePost extends Component {
 DeletePost.propTypes = {
   deletePost: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
-  postId: PropTypes.string.isRequired
+  postId: PropTypes.string.isRequired,
 };
 
 export default connect(null, { deletePost })(withStyles(styles)(DeletePost));

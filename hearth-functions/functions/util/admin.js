@@ -3,10 +3,10 @@ const serviceAccount = require('../hearth-prototype-firebase-adminsdk-76upf-c8ab
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: 'https://console.firebase.google.com/project/hearth-prototype/database/firestore/data~2Fposts~2FHag1ji1lFQfXE9itFGCu'
+  databaseURL:
+    'https://console.firebase.google.com/project/hearth-prototype/database/firestore/data~2Fposts~2FHag1ji1lFQfXE9itFGCu',
 });
 
 const db = admin.firestore();
 
 module.exports = { admin, db };
-

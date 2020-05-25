@@ -19,23 +19,23 @@ import ChatIcon from '@material-ui/icons/ChatBubble';
 
 class Notifications extends Component {
   state = {
-    anchorEl: null
-  }
+    anchorEl: null,
+  };
 
-  handleOpen = event => {
+  handleOpen = (event) => {
     this.setState({ anchorEl: event.target });
-  }
+  };
 
   handleClose = () => {
     this.setState({ anchorEl: null });
-  }
+  };
 
   onMenuOpened = () => {
     let unreadNotificationsIds = this.props.notifications
-      .filter(not => !not.read)
-      .map(not => not.notificationId);
+      .filter((not) => !not.read)
+      .map((not) => not.notificationId);
     this.props.markNotificationsRead(unreadNotificationsIds);
-  }
+  };
 
   render() {
     const notifications = this.props.notifications;
@@ -45,30 +45,35 @@ class Notifications extends Component {
 
     let notificationsIcon;
     if (notifications && notifications.length > 0) {
-      notifications.filter(not => not.read === false).length > 0
-        ? notificationsIcon = (
-          <Badge badgeContent={notifications.filter(not => not.read === false).length}
-            color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        ) : (
-          notificationsIcon = <NotificationsIcon />
-        )
+      notifications.filter((not) => not.read === false).length > 0
+        ? (notificationsIcon = (
+            <Badge
+              badgeContent={
+                notifications.filter((not) => not.read === false).length
+              }
+              color="secondary"
+            >
+              <NotificationsIcon />
+            </Badge>
+          ))
+        : (notificationsIcon = <NotificationsIcon />);
     } else {
-      notificationsIcon = <NotificationsIcon />
+      notificationsIcon = <NotificationsIcon />;
     }
 
     let notificationsMarkup =
       notifications && notifications.length > 0 ? (
-        notifications.map(not => {
-          const verb = not.type === 'like' ? 'liked your post' : 'left you a comment';
+        notifications.map((not) => {
+          const verb =
+            not.type === 'like' ? 'liked your post' : 'left you a comment';
           const time = dayjs(not.createdAt).fromNow();
           const iconColour = not.read ? 'primary' : 'secondary';
-          const icon = not.type === 'like' ? (
-            <FavouriteIcon color={iconColour} style={{ marginRight: 10 }} />
-          ) : (
-            <ChatIcon color={iconColour} style={{ marginRight: 10 }} />
-          )
+          const icon =
+            not.type === 'like' ? (
+              <FavouriteIcon color={iconColour} style={{ marginRight: 10 }} />
+            ) : (
+              <ChatIcon color={iconColour} style={{ marginRight: 10 }} />
+            );
 
           return (
             <MenuItem key={not.createdAt} onClick={this.handleClose}>
@@ -77,25 +82,32 @@ class Notifications extends Component {
                 component={Link}
                 color="primary"
                 variant="body2"
-                to={`/users/${not.recipient}/post/${not.postId}`}>
+                to={`/users/${not.recipient}/post/${not.postId}`}
+              >
                 {not.sender} {verb} {time}
               </Typography>
             </MenuItem>
-          )
+          );
         })
       ) : (
         <MenuItem onClick={this.handleClose}>
           You have no notifications yet
         </MenuItem>
-      )
+      );
 
     return (
       <Fragment>
         <Tooltip placement="top" title="Notifications">
-          <IconButton aria-owns={anchorEl ? 'simple-menu' : undefined}
+          <IconButton
+            aria-owns={anchorEl ? 'simple-menu' : undefined}
             aria-haspopup="true"
-            style={{ backgroundColor: 'white', boxShadow: '0 2.8px 2.2px rgba(0, 0, 0, 0.08), 0 2.8px 2.2px rgba(0, 0, 0, 0.08), 0 0 2.2px 2px rgba(0, 0, 0, 0.04)' }}
-            onClick={this.handleOpen}>
+            style={{
+              backgroundColor: 'white',
+              boxShadow:
+                '0 2.8px 2.2px rgba(0, 0, 0, 0.08), 0 2.8px 2.2px rgba(0, 0, 0, 0.08), 0 0 2.2px 2px rgba(0, 0, 0, 0.04)',
+            }}
+            onClick={this.handleOpen}
+          >
             {notificationsIcon}
           </IconButton>
         </Tooltip>
@@ -104,21 +116,24 @@ class Notifications extends Component {
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
-          onEntered={this.onMenuOpened}>
+          onEntered={this.onMenuOpened}
+        >
           {notificationsMarkup}
         </Menu>
       </Fragment>
-    )
+    );
   }
 }
 
 Notifications.propTypes = {
   markNotificationsRead: PropTypes.func.isRequired,
-  notifications: PropTypes.array.isRequired
-}
+  notifications: PropTypes.array.isRequired,
+};
 
-const mapStateToProps = state => ({
-  notifications: state.user.notifications
+const mapStateToProps = (state) => ({
+  notifications: state.user.notifications,
 });
 
-export default connect(mapStateToProps, { markNotificationsRead })(Notifications);
+export default connect(mapStateToProps, { markNotificationsRead })(
+  Notifications
+);
