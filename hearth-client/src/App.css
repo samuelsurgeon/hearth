@@ -43,15 +43,13 @@
     background-color: white;
   }
 
-  /*
-  .PostDialog-paper-363 {
+  .MuiDialog-paper {
     min-width: calc(100vw - 200px) !important;
     max-width: calc(100vw - 200px) !important;
     overflow-x: hidden;
     border-radius: 15px;
     background-color: white;
   }
-  */
 }
 
 @media only screen and (min-width: 1000px) {
@@ -89,15 +87,13 @@
     background-color: white;
   }
 
-  /*
-  .PostDialog-paper-363 {
+  .MuiDialog-paper {
     min-width: calc(100vw - 600px) !important;
     max-width: calc(100vw - 600px) !important;
     overflow-x: hidden;
     border-radius: 15px;
     background-color: white;
   }
-  */
 }
 
 @media only screen and (min-width: 1500px) {
@@ -187,15 +183,13 @@
     background-color: white;
   }
 
-  /*
-  .PostDialog-paper-363 {
+  .MuiDialog-paper {
     min-width: calc(100vw - 80vw) !important;
     max-width: calc(100vw - 80vw) !important;
     overflow-x: hidden;
     border-radius: 15px;
     background-color: white;
   }
-  */
 }
 
 
