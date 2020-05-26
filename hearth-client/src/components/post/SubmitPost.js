@@ -96,7 +96,6 @@ class SubmitPost extends Component {
             root: classes.root,
             paper: classes.paper,
           }}
-          fullWidth
           maxWidth="sm"
         >
           <MyButton

@@ -29,8 +29,6 @@ const styles = (theme) => ({
     borderRadius: 15,
     backgroundColor: 'white',
     overflowX: 'hidden',
-    minWidth: '91%',
-    maxWidth: '91%',
   },
   card: {
     display: 'flex',
@@ -204,8 +202,7 @@ class PostDialog extends Component {
             root: classes.root,
             paper: classes.paper,
           }}
-          fullWidth
-          maxWidth="xs"
+          maxWidth="s"
         >
           <MyButton
             tip="Close"

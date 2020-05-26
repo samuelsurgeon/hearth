@@ -43,6 +43,7 @@
     background-color: white;
   }
 
+  /*
   .PostDialog-paper-363 {
     min-width: calc(100vw - 200px) !important;
     max-width: calc(100vw - 200px) !important;
@@ -50,6 +51,7 @@
     border-radius: 15px;
     background-color: white;
   }
+  */
 }
 
 @media only screen and (min-width: 1000px) {
@@ -87,6 +89,7 @@
     background-color: white;
   }
 
+  /*
   .PostDialog-paper-363 {
     min-width: calc(100vw - 600px) !important;
     max-width: calc(100vw - 600px) !important;
@@ -94,6 +97,7 @@
     border-radius: 15px;
     background-color: white;
   }
+  */
 }
 
 @media only screen and (min-width: 1500px) {
@@ -131,7 +135,7 @@
     margin-top: 8px;
   }
 
-  .jss10 {
+  .SubmitPost-paper-10 {
     min-width: calc(100vw - 1200px) !important;
     max-width: calc(100vw - 1200px) !important;
     overflow-x: hidden;
@@ -139,7 +143,7 @@
     background-color: white;
   }
 
-  .jss242 {
+  .MuiDialog-paper {
     min-width: calc(100vw - 1200px) !important;
     max-width: calc(100vw - 1200px) !important;
     overflow-x: hidden;
@@ -183,6 +187,7 @@
     background-color: white;
   }
 
+  /*
   .PostDialog-paper-363 {
     min-width: calc(100vw - 80vw) !important;
     max-width: calc(100vw - 80vw) !important;
@@ -190,6 +195,7 @@
     border-radius: 15px;
     background-color: white;
   }
+  */
 }
 
 
